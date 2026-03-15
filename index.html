@@ -9,8 +9,8 @@
 </head>
 <body>
 
-<div class="full-width-banner">
-        Welcome to Mathivathanan's Portfolio
+<div class="full-width-banner" id="topBanner">
+        <span id="bannerText">Welcome to Mathivathanan's Portfolio</span>
     </div>
 
     <div class="main-container">
@@ -18,24 +18,25 @@
         <div class="content-section">
             
             <header class="sticky-header">
-                <nav class="top-nav">
-                    <ul>
-                        <li><a href="#courses">Courses</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#internships">Internships</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#project">Project</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#resume-section" class="nav-resume-link">Download Resume</a></li>
-                    </ul>
-                </nav>
-            </header>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#internships">Internships</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#project">Project</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#resume-section" class="nav-resume-link">Download Resume</a></li>
+                </ul>
+            </nav>
+        </header>
+
         <main>
             <div class="hero-text">
                 <div class="name-container">
                     <span class="prefix">Mr. </span>
-                    <span class="main-name">Mathivathanan N,</span>
-                    <span class="suffix">DAE., B.E-EEE</span>
+                    <span class="main-name">Mathivathanan N</span>
+                    <span class="suffix">, DAE., B.E-EEE</span>
                 </div>
             </div>
 
@@ -216,6 +217,24 @@
                 document.getElementById("emailMenu").classList.remove("show");
             }, 2000);
         }
+
+        // ==========================================
+        // Banner Text Change on Scroll Function
+        // ==========================================
+        window.addEventListener('scroll', function() {
+            var banner = document.getElementById('topBanner');
+            var bannerText = document.getElementById('bannerText');
+            
+            // Page-ah 100px keela scroll panniyacha nu check pannum
+            if (window.scrollY > 100) { 
+                banner.classList.add('scrolled');
+                bannerText.textContent = "Mathivathanan N, DAE., B.E-EEE."; // Scroll aanathum puthu text
+            } else {
+                banner.classList.remove('scrolled');
+                bannerText.textContent = "Welcome to Mathivathanan's Portfolio"; // Mela vanthathum palaiya text
+            }
+        });
+
     </script>
 
 </body>
