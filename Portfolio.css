@@ -360,24 +360,37 @@ body {
 }
 
 /* ============================
-   RIGHT SIDE (Fixed Image - Pushed Right)
+   RIGHT SIDE (Fixed Image with 3D Shadow)
    ============================ */
 .image-section {
     width: 32%; 
-    height: calc(100vh - 50px); /* Banner height-ah minus pannitom */
+    /* Manda idikama irukka height and top adjust panniruken */
+    height: calc(100vh - 80px); 
     position: sticky;
-    top: 50px; /* Banner-ku keela irunthu stick aagum */
+    top: 80px; /* Banner (50px)-ku keela inum 30px gap koduthuruken */
     display: flex;
     justify-content: flex-end; 
-    align-items: center;
+    align-items: center; 
     background-color: #ffffff;
     padding-right: 2%; 
+    z-index: 10; /* Image content-ku mela theliva nikka */
 }
 
 .image-section img {
     max-width: 100%;
-    max-height: calc(100vh - 50px); /* Image-um cut aagathu */
+    max-height: calc(100vh - 80px); /* Container height-ku match aaga */
     object-fit: contain;
+    
+    /* 3D Shadow Effect */
+    filter: drop-shadow(-15px 15px 25px rgba(26, 76, 204, 0.15)); 
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* Hover pannumbothu 3D pop-up aaga */
+.image-section img:hover {
+    filter: drop-shadow(-20px 20px 35px rgba(26, 76, 204, 0.25));
+    /* Mela thookki, konjam perusaaga (3D feel) */
+    transform: translateY(-5px) scale(1.02); 
 }
 
 /* ============================
@@ -563,4 +576,30 @@ body {
     visibility: visible;
     opacity: 1;
     bottom: 50px; /* Slides up slightly for animation */
+}
+
+/* ============================
+   RIGHT SIDE (Perfect 3D Shadow Image)
+   ============================ */
+.image-section img {
+    max-width: 100%;
+    max-height: calc(100vh - 80px); 
+    object-fit: contain;
+    
+    /* 💥 PRO TRICK: Double Drop Shadow for realistic 3D depth */
+    /* 1st part: Dark tight shadow | 2nd part: Darker blue soft shadow */
+    filter: drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) 
+            drop-shadow(-15px 15px 35px rgba(15, 35, 80, 0.35)); 
+            
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* Hover pannumbothu 3D pop-up inum theliva theriyum */
+.image-section img:hover {
+    /* Shadow inum spread aagi, image munnadi varum */
+    filter: drop-shadow(-8px 8px 15px rgba(0, 0, 0, 0.15)) 
+            drop-shadow(-25px 25px 45px rgba(15, 35, 80, 0.45));
+            
+    /* Mela thookki, konjam perusaaga (Perfect 3D feel) */
+    transform: translateY(-8px) scale(1.02); 
 }
