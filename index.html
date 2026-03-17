@@ -26,17 +26,32 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#project">Project</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#resume-section" class="nav-resume-link">Download Resume</a></li>
+                    <li><a href="Mathivathanan_Resume.pdf" download class="nav-resume-link">Download Resume</a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
+            <main>
             <div class="hero-text">
                 <div class="name-container">
                     <span class="prefix">Mr. </span>
                     <span class="main-name">Mathivathanan N</span>
-                    <span class="suffix">, DAE., B.E-EEE</span>
+                    <span class="suffix">, DAE., B.E-EEE.</span>
+                </div>
+                
+                <div class="social-links-hero">
+                    <a href="https://github.com/mathivathanann" target="_blank" class="social-btn github-btn">
+                        GitHub
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/mathivathanann" target="_blank" class="social-btn linkedin-btn">
+                        LinkedIn
+                    </a>
+                    
+                    <a href="mailto:mathivathanan.n@hotmail.com" class="social-btn email-btn" onclick="copyEmailAndShowToast()">
+                        Get in Touch
+                    </a>
                 </div>
             </div>
 
@@ -160,39 +175,39 @@
 
                 <div class="contact-details">
                     <p><strong>Address:</strong><br> 5/243 Thangam Complex, Pettikadai Bus Stop,<br> Uthukkuli Main Road, Uthukkuli (TK),<br> Tiruppur (DT) – 638 752.</p>
-                    <p><strong>Contact:</strong> +91 63820 68379</p>
+                    <p><strong>Contact:</strong> <a href="tel:+916382068379">+91 63820 68379</a></p>
                     
                     <div class="contact-line">
                         <strong>Email:</strong> 
                         <div class="email-dropdown">
                             <span class="email-text" onclick="toggleEmailMenu()">mathivathanan.n@hotmail.com</span>
                             <div class="email-menu" id="emailMenu">
+                                <span class="copy-btn" onclick="openMailApp()">📧 Open Mail App</span>
+                                
                                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mathivathanan.n@hotmail.com" target="_blank">🌐 Open in Gmail</a>
-                                <span class="copy-btn" onclick="copyMyEmail()" id="copyText">📋 Copy Email ID</span>
+                                
+                                <span class="copy-btn" onclick="copyEmailAndShowToast()">📋 Copy Email ID</span>
                             </div>
                         </div>
                     </div>
 
-                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mathivathanann" target="_blank">www.linkedin.com/in/mathivathanann</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mathivathanann" target="_blank">linkedin.com/in/mathivathanann</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/mathivathanann" target="_blank">github.com/mathivathanann</a></p>
                 </div>
-            </section>
-
-            <section id="resume-section" class="info-section center-align">
-                <h2>My Resume</h2>
-                <p>Click the button below to download my complete profile.</p>
-                <a href="Mathivathanan_Resume.pdf" download class="resume-btn">📄 Download Resume</a>
             </section>
 
         </main>
     </div>
 
     <div class="image-section">
-        <img src="Profile.png" alt="Mathivathanan N Photo">
+        <img src="C:\Users\Mathi\Desktop\Portfolio\Profile.png" alt="Mathivathanan N Photo">
     </div>
 
 </div>
 
-<script>
+<div id="toastPopup">✅ Email ID copied to clipboard!</div>
+
+    <script>
         // Options menu-va open/close panna
         function toggleEmailMenu() {
             document.getElementById("emailMenu").classList.toggle("show");
@@ -211,19 +226,6 @@
             }
         }
 
-        // Email ID copy panna
-        function copyMyEmail() {
-            navigator.clipboard.writeText("mathivathanan.n@hotmail.com");
-            var copyTextBtn = document.getElementById("copyText");
-            copyTextBtn.innerHTML = "✅ Copied!";
-            
-            // 2 seconds kalichu palaya maari maathida
-            setTimeout(function() {
-                copyTextBtn.innerHTML = "📋 Copy Email ID";
-                document.getElementById("emailMenu").classList.remove("show");
-            }, 2000);
-        }
-
         // ==========================================
         // Banner Text Change on Scroll Function
         // ==========================================
@@ -231,17 +233,72 @@
             var banner = document.getElementById('topBanner');
             var bannerText = document.getElementById('bannerText');
             
-            // Page-ah 100px keela scroll panniyacha nu check pannum
             if (window.scrollY > 100) { 
                 banner.classList.add('scrolled');
-                bannerText.textContent = "Mathivathanan N, DAE., B.E-EEE."; // Scroll aanathum puthu text
+                bannerText.textContent = "Mathivathanan N"; 
             } else {
                 banner.classList.remove('scrolled');
-                bannerText.textContent = "Welcome to Mathivathanan's Portfolio"; // Mela vanthathum palaiya text
+                bannerText.textContent = "Welcome to Mathivathanan's Portfolio"; 
             }
         });
 
-    </script>
+        // ==========================================
+        // Dynamic Popup Function (Message-ah maathikalam)
+        // ==========================================
+        function showToastMessage(message) {
+            var toast = document.getElementById("toastPopup");
+            if(toast) {
+                toast.innerHTML = message; // Text-ah dynamic ah update pannum
+                toast.classList.add("show");
+                
+                // 3.5 seconds kalichu popup-ah maraikka vechudum
+                setTimeout(function() {
+                    toast.classList.remove("show");
+                }, 3500);
+            }
+        }
 
+        // ==========================================
+        // 1. Copy Email Click Pannum Pothu
+        // ==========================================
+        function copyEmailAndShowToast() {
+            var emailID = "mathivathanan.n@hotmail.com";
+            
+            // Secure ah copy panra code
+            try {
+                navigator.clipboard.writeText(emailID);
+            } catch (err) {
+                var tempInput = document.createElement("input");
+                tempInput.value = emailID;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+            }
+            
+            // Success Popup kaattum
+            showToastMessage("✅ Email ID copied to clipboard!");
+
+            // Dropdown menu open la iruntha close pannidum
+            var emailMenu = document.getElementById("emailMenu");
+            if (emailMenu) emailMenu.classList.remove("show");
+        }
+
+        // ==========================================
+        // 2. Open Mail App Click Pannum Pothu
+        // ==========================================
+        function openMailApp() {
+            // Mail app-ah open panna try pannum
+            window.location.href = "mailto:mathivathanan.n@hotmail.com";
+            
+            // Professional Information Popup kaattum
+            showToastMessage("⏳ Opening Mail App... <br><span style='font-size: 0.85rem; color: #cbd5e1;'>(If it doesn't open, please use the 'Copy Email ID' option)</span>");
+
+            // Dropdown menu open la iruntha close pannidum
+            var emailMenu = document.getElementById("emailMenu");
+            if (emailMenu) emailMenu.classList.remove("show");
+        }
+
+    </script>
 </body>
 </html>
