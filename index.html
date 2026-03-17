@@ -19,13 +19,18 @@
             
             <header class="sticky-header">
             <nav class="top-nav">
-                <ul>
-                    <li><a href="#courses">Courses</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#internships">Internships</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#project">Project</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <div class="mobile-nav-header">
+                    <span id="currentSectionText">Portfolio</span>
+                    <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                </div>
+                
+                <ul id="navLinks">
+                    <li><a href="#courses" class="nav-item">Courses</a></li>
+                    <li><a href="#education" class="nav-item">Education</a></li>
+                    <li><a href="#internships" class="nav-item">Internships</a></li>
+                    <li><a href="#skills" class="nav-item">Skills</a></li>
+                    <li><a href="#project" class="nav-item">Project</a></li>
+                    <li><a href="#contact" class="nav-item">Contact</a></li>
                     <li><a href="Mathivathanan_Resume.pdf" download class="nav-resume-link">Download Resume</a></li>
                 </ul>
             </nav>
@@ -240,7 +245,7 @@
             
             if (window.scrollY > 100) { 
                 banner.classList.add('scrolled');
-                bannerText.textContent = "Mathivathanan N"; 
+                bannerText.textContent = "Mathivathanan N, DAE., B.E-EEE."; 
             } else {
                 banner.classList.remove('scrolled');
                 bannerText.textContent = "Welcome to Mathivathanan's Portfolio"; 
@@ -351,6 +356,57 @@
                 resumeBtn.addEventListener('mouseenter', () => applyColorShadow('rgba(26, 76, 204, 0.5)'));
                 resumeBtn.addEventListener('mouseleave', removeColorShadow);
             }
+        });
+
+        // ==========================================
+        // MOBILE NAVBAR & SCROLL TRACKER
+        // ==========================================
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. Menu Toggle Function
+            window.toggleMobileMenu = function() {
+                var navLinks = document.getElementById("navLinks");
+                navLinks.classList.toggle("active");
+            }
+
+            // 2. Link click panna udane menu close aagida
+            var navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    if(window.innerWidth <= 768) {
+                        document.getElementById("navLinks").classList.remove("active");
+                    }
+                });
+            });
+
+            // 3. Scroll panrapa entha section la irukom nu mela kaatta
+            var sections = document.querySelectorAll("section");
+            var currentSectionText = document.getElementById("currentSectionText");
+
+            // Scroll position check panra settings
+            var observerOptions = {
+                root: null,
+                rootMargin: "-20% 0px -60% 0px", // Screen-oda naduvula entha section irukko atha edukkum
+                threshold: 0
+            };
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        // Section-oda ID (e.g., 'courses', 'skills') eduthu text-ah maathrom
+                        var currentId = entry.target.getAttribute("id");
+                        if(currentId && currentSectionText) {
+                            var sectionName = currentId.charAt(0).toUpperCase() + currentId.slice(1);
+                            currentSectionText.textContent = sectionName;
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Ellaa section-um observe panrom
+            sections.forEach(function(section) {
+                observer.observe(section);
+            });
         });
     </script>
 </body>
