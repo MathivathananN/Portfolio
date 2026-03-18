@@ -267,7 +267,7 @@
         }
 
         // ==========================================
-        // Banner Text Change on Scroll Function
+        // Banner Text Change on Scroll Function (RESTORED)
         // ==========================================
         window.addEventListener('scroll', function () {
             var banner = document.getElementById('topBanner');
@@ -275,9 +275,12 @@
 
             if (window.scrollY > 100) {
                 banner.classList.add('scrolled');
-                // Ippo text update aagathu, CSS vazhiyave handle aagikum
+                // Scroll panna udane unga name maaridum
+                if (bannerText) bannerText.textContent = "Mathivathanan N";
             } else {
                 banner.classList.remove('scrolled');
+                // Mela ponathum thirumba Welcome message vanthudum
+                if (bannerText) bannerText.textContent = "Welcome to Mathivathanan's Portfolio";
             }
         });
 
