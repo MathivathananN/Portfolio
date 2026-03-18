@@ -275,10 +275,9 @@
 
             if (window.scrollY > 100) {
                 banner.classList.add('scrolled');
-                bannerText.textContent = "Mathivathanan N";
+                // Ippo text update aagathu, CSS vazhiyave handle aagikum
             } else {
                 banner.classList.remove('scrolled');
-                bannerText.textContent = "Welcome to Mathivathanan's Portfolio";
             }
         });
 
@@ -318,19 +317,30 @@
             var emailMenu = document.getElementById("emailMenu");
             if (emailMenu) emailMenu.classList.remove("show");
 
-            // Magic Green Shadow with LOCK
+            // 💥 FIXED: Bright Neon Green Shadow & Perfect Reset Logic
             var profileImg = document.querySelector('.image-section img');
             if (profileImg) {
-                isSuccessGlowActive = true; // Hover colors-ah lock pandrom
-                profileImg.style.filter = "drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(40, 167, 69, 0.7))";
+                isSuccessGlowActive = true; 
+                // Bright Neon Green with larger spread
+                profileImg.style.filter = "drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-20px 20px 55px rgba(0, 255, 64, 0.95))";
 
                 setTimeout(function () {
-                    isSuccessGlowActive = false; // 2 seconds kalichu unlock pandrom
-                    // Unlock aana aprom mouse vera button mela illana mattum shadow-ah remove pannu
-                    if (!document.querySelector('.social-btn:hover') && !document.querySelector('.nav-resume-link:hover')) {
+                    isSuccessGlowActive = false; 
+                    
+                    // Lock edutha aprom mouse yenga irukku nu check pandrom
+                    let hoveredBtn = document.querySelector('.social-btn:hover, .nav-resume-link:hover');
+                    
+                    if (hoveredBtn) {
+                        // Mouse innum button mela thaan irukku na, antha button color-ah thirumba kondu varom
+                        if (hoveredBtn.classList.contains('github-btn')) profileImg.style.filter = 'drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(36, 41, 46, 0.5))';
+                        else if (hoveredBtn.classList.contains('linkedin-btn')) profileImg.style.filter = 'drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(0, 119, 181, 0.5))';
+                        else if (hoveredBtn.classList.contains('email-btn')) profileImg.style.filter = 'drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(204, 0, 0, 0.5))';
+                        else if (hoveredBtn.classList.contains('nav-resume-link')) profileImg.style.filter = 'drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(26, 76, 204, 0.5))';
+                    } else {
+                        // Mouse veliya poiruchu na normal state-ku mathirom
                         profileImg.style.filter = "";
                     }
-                }, 2000);
+                }, 2000); // 2 Seconds
             }
         }
 
@@ -346,60 +356,51 @@
         }
 
         // ==========================================
-        // MAGIC SHADOW EFFECT (Color Change Only)
+        // 💥 FIXED: MAGIC SHADOW EFFECT (Selects ALL Buttons)
         // ==========================================
         document.addEventListener("DOMContentLoaded", function () {
             var profileImg = document.querySelector('.image-section img');
 
             function applyColorShadow(color) {
-                // Green lock active-ah iruntha entha color-um maara koodathu!
                 if (isSuccessGlowActive) return;
                 profileImg.style.filter = `drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px ${color})`;
             }
 
             function removeColorShadow() {
-                // Green lock active-ah iruntha shadow remove aaga koodathu!
                 if (isSuccessGlowActive) return;
                 profileImg.style.filter = "";
             }
 
-            var githubBtn = document.querySelector('.github-btn');
-            if (githubBtn) {
-                githubBtn.addEventListener('mouseenter', () => applyColorShadow('rgba(36, 41, 46, 0.5)'));
-                githubBtn.addEventListener('mouseleave', removeColorShadow);
-            }
+            // querySelectorAll pottu ella buttons-aiyum edukurom (Top Banner AND Hero section)
+            document.querySelectorAll('.github-btn').forEach(btn => {
+                btn.addEventListener('mouseenter', () => applyColorShadow('rgba(36, 41, 46, 0.5)'));
+                btn.addEventListener('mouseleave', removeColorShadow);
+            });
 
-            var linkedinBtn = document.querySelector('.linkedin-btn');
-            if (linkedinBtn) {
-                linkedinBtn.addEventListener('mouseenter', () => applyColorShadow('rgba(0, 119, 181, 0.5)'));
-                linkedinBtn.addEventListener('mouseleave', removeColorShadow);
-            }
+            document.querySelectorAll('.linkedin-btn').forEach(btn => {
+                btn.addEventListener('mouseenter', () => applyColorShadow('rgba(0, 119, 181, 0.5)'));
+                btn.addEventListener('mouseleave', removeColorShadow);
+            });
 
-            var emailBtn = document.querySelector('.email-btn');
-            if (emailBtn) {
-                emailBtn.addEventListener('mouseenter', () => applyColorShadow('rgba(204, 0, 0, 0.5)'));
-                emailBtn.addEventListener('mouseleave', removeColorShadow);
-            }
+            document.querySelectorAll('.email-btn').forEach(btn => {
+                btn.addEventListener('mouseenter', () => applyColorShadow('rgba(204, 0, 0, 0.5)'));
+                btn.addEventListener('mouseleave', removeColorShadow);
+            });
 
-            var resumeBtn = document.querySelector('.nav-resume-link');
-            if (resumeBtn) {
-                resumeBtn.addEventListener('mouseenter', () => applyColorShadow('rgba(26, 76, 204, 0.5)'));
-                resumeBtn.addEventListener('mouseleave', removeColorShadow);
-            }
+            document.querySelectorAll('.nav-resume-link').forEach(btn => {
+                btn.addEventListener('mouseenter', () => applyColorShadow('rgba(26, 76, 204, 0.5)'));
+                btn.addEventListener('mouseleave', removeColorShadow);
+            });
         });
 
         // ==========================================
         // MOBILE NAVBAR & SCROLL TRACKER
         // ==========================================
         document.addEventListener("DOMContentLoaded", function () {
-
-            // 1. Menu Toggle Function
             window.toggleMobileMenu = function () {
-                var navLinks = document.getElementById("navLinks");
-                navLinks.classList.toggle("active");
+                document.getElementById("navLinks").classList.toggle("active");
             }
 
-            // 2. Link click panna udane menu close aagida
             var navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(function (item) {
                 item.addEventListener('click', function () {
@@ -409,21 +410,18 @@
                 });
             });
 
-            // 3. Scroll panrapa entha section la irukom nu mela kaatta
             var sections = document.querySelectorAll("section");
             var currentSectionText = document.getElementById("currentSectionText");
 
-            // Scroll position check panra settings
             var observerOptions = {
                 root: null,
-                rootMargin: "-20% 0px -60% 0px", // Screen-oda naduvula entha section irukko atha edukkum
+                rootMargin: "-20% 0px -60% 0px",
                 threshold: 0
             };
 
             var observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
-                        // Section-oda ID (e.g., 'courses', 'skills') eduthu text-ah maathrom
                         var currentId = entry.target.getAttribute("id");
                         if (currentId && currentSectionText) {
                             var sectionName = currentId.charAt(0).toUpperCase() + currentId.slice(1);
@@ -433,7 +431,6 @@
                 });
             }, observerOptions);
 
-            // Ellaa section-um observe panrom
             sections.forEach(function (section) {
                 observer.observe(section);
             });
