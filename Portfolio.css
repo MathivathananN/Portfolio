@@ -812,48 +812,110 @@ body {
     }
 }
 
-/* Banner Alignment (Text left, Buttons right) */
+/* ==========================================
+   TOP BANNER & MINI BUTTONS (FINAL FIX)
+   ========================================== */
+
+/* Banner Base */
 #topBanner {
     display: flex;
-    justify-content: space-between; /* Text left side, Buttons right side poga */
-    align-items: center; /* Rendu may center ah align aaga */
-    padding: 10px 20px;
-    width: 100%;
-    box-sizing: border-box;
-    /* Unga existing banner CSS-la 'position: fixed' irukka nu check pannikonga */
-}
-
-/* Buttons Straight Line Alignment */
-.top-social-links {
-    display: flex;
-    gap: 15px; /* Buttons-ku naduvula irukura space */
+    justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
-/* Mobile View Responsiveness */
+/* Hidden Buttons - Strict Straight Line */
+.top-social-links {
+    display: flex !important;
+    flex-direction: row !important; /* 💥 Ithu thaan straight line-la vekkum */
+    flex-wrap: nowrap !important;   /* 💥 Udanju keela vara vidathu */
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+/* ==========================================
+   ULTIMATE FIX FOR STRAIGHT LINE BUTTONS
+   ========================================== */
+
+/* 1. Scroll aagumbothu Banner format udaiyama irukka */
+.full-width-banner.scrolled {
+    justify-content: space-between !important; /* Text left-layum, buttons right-layum strict aaga nikkum */
+    padding: 10px 20px !important; 
+}
+
+/* 2. Container strict ah row-la thaan irukkanum */
+.top-social-links {
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; 
+    align-items: center !important;
+    gap: 10px !important;
+    width: auto !important; /* Box surungama irukka */
+    
+    /* Animations */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+/* Scroll Pannumbothu theriyum */
+#topBanner.scrolled .top-social-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 3. Buttons kandipa orey line-la thaan nikkanum (No stacking) */
+.top-social-links .mini-btn {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    width: max-content !important; /* Text evlo peruso avlo thaan width edukkum */
+    flex: 0 0 auto !important; /* Button size-ah browser kurakka koodathu */
+    padding: 4px 10px !important; 
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+}
+
+/* ==========================================
+   MOBILE VIEW FIX
+   ========================================== */
 @media (max-width: 768px) {
-    #topBanner {
-        padding: 10px; /* Mobile-la space kurakkidalam */
+    .full-width-banner.scrolled {
+        padding: 8px 10px !important;
     }
     
     #bannerText {
-        font-size: 12px; /* Text chinnatha aagum */
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; /* Text perusa iruntha ... nu varum */
+        white-space: nowrap !important; /* Kandipa orey line-la thaan irukkanum */
+        overflow: visible !important; /* Text hide aaga koodathu */
+        font-size: clamp(9px, 2.5vw, 11px) !important; /* Screen size-ku yetha maari font auto-va adjust aagum */
+        max-width: none !important; /* Text-ku limit illama full-a theriya */
     }
-
-    .top-social-links {
-        gap: 6px; /* Buttons gap kuraiyum */
-    }
-
-    /* Mobile-la antha shape & color maarama size mattum chinnatha aaga */
-    .top-social-links .social-btn {
-        padding: 5px 8px !important; 
-        font-size: 11px !important;
-        white-space: nowrap; /* Text next line-ku poga koodathu */
+    
+    /* Extra space kedaikka banner padding-ah innum konjam kurakkalam */
+    .full-width-banner, 
+    .full-width-banner.scrolled {
+        padding: 8px 5px !important; 
     }
 }
+
+    .top-social-links {
+        gap: 5px !important;
+    }
+
+    .top-social-links .mini-btn {
+        padding: 4px 6px !important;
+        font-size: 9px !important; 
+    }
+
 
 /* Banner Alignment */
 #topBanner {
@@ -896,19 +958,20 @@ body {
     }
     
     #bannerText {
-        font-size: 13px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; 
+        font-size: 12px; 
+        white-space: normal; /* Text hide aagama next line-ku wrap aaga allow pannum */
+        line-height: 1.3; /* Line gap paaka neat ah irukka */
+        max-width: 65%; /* Buttons-ah idikkama irukka text-ku limit set panrom */
     }
 
     .top-social-links {
-        gap: 5px; /* Mobile la gap innum kammi aagum */
+        gap: 5px;
+        flex-shrink: 0; /* Text perusa aanaalum buttons-oda size kuraiyaama irukka */
     }
 
     /* Mobile la buttons innum chinna size aagum */
     .mini-btn {
-        padding: 3px 6px !important;
+        padding: 4px 6px !important;
         font-size: 9px !important; 
     }
 }
