@@ -1,14 +1,15 @@
 /* Basic Page Setup */
 html {
-    scroll-behavior: smooth; /* Enables smooth scrolling when navbar links are clicked */
+    scroll-behavior: smooth;
+    /* Enables smooth scrolling when navbar links are clicked */
 }
 
 :root {
     --primary-red: #cc0000;
     --primary-blue: #1a4ccc;
     --light-blue-bg: #e8f0fe;
-    --text-dark: #2a3b5c; 
-    --text-light: #4a5a7a; 
+    --text-dark: #2a3b5c;
+    --text-light: #4a5a7a;
     --bg-light: #fdfdfd;
 }
 
@@ -36,8 +37,9 @@ body {
    LEFT SIDE (Content) 
    ============================ */
 .content-section {
-    width: 68%; 
-    padding: 0 5% 50px 6%; /* Top padding removed to make header flush */
+    width: 68%;
+    padding: 0 5% 50px 6%;
+    /* Top padding removed to make header flush */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -51,28 +53,33 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 50px; 
+    height: 50px;
     background-color: var(--light-blue-bg);
     color: var(--primary-red);
     display: flex;
     align-items: center;
-    justify-content: center; /* Initial ah center-la irukum */
+    justify-content: center;
+    /* Initial ah center-la irukum */
     white-space: nowrap;
     overflow: hidden;
-    font-size: clamp(12px, 2.5vw, 1.15rem); 
+    font-size: clamp(12px, 2.5vw, 1.15rem);
     font-weight: 600;
     letter-spacing: 0.5px;
-    z-index: 2000; 
+    z-index: 2000;
     box-shadow: 0 2px 10px rgba(26, 76, 204, 0.1);
-    transition: all 0.4s ease; /* Smooth-ah left-ku poga transition */
+    transition: all 0.4s ease;
+    /* Smooth-ah left-ku poga transition */
     padding: 0 20px;
 }
 
 /* Scroll aanathukku aprom intha style apply aagum */
 .full-width-banner.scrolled {
-    justify-content: flex-start; /* Text ah left side ku thallidum */
-    padding-left: 6%; /* Left-la irunthu konjam gap */
-    background-color: #ffffff; /* Scroll aanathum banner color white-ah maara (optional, but looks good) */
+    justify-content: flex-start;
+    /* Text ah left side ku thallidum */
+    padding-left: 6%;
+    /* Left-la irunthu konjam gap */
+    background-color: #ffffff;
+    /* Scroll aanathum banner color white-ah maara (optional, but looks good) */
     border-bottom: 1px solid var(--light-blue-bg);
 }
 
@@ -82,10 +89,10 @@ body {
    ============================ */
 .sticky-header {
     position: sticky;
-    top: 50px; 
-    z-index: 1000; 
-    background-color: var(--bg-light); 
-    padding: 20px 0 10px 0; 
+    top: 50px;
+    z-index: 1000;
+    background-color: var(--bg-light);
+    padding: 20px 0 10px 0;
     margin-bottom: 20px;
     width: 100%;
     border-bottom: 2px solid rgba(26, 76, 204, 0.05);
@@ -93,7 +100,7 @@ body {
 
 /* Navbar styles remain same */
 .top-nav {
-    background-color: #ffffff; 
+    background-color: #ffffff;
     padding: 12px 25px;
     border-radius: 40px;
     box-shadow: 0 4px 15px rgba(26, 76, 204, 0.08);
@@ -128,7 +135,7 @@ body {
     padding: 6px 16px;
     border-radius: 20px;
     font-weight: 600 !important;
-    
+
     /* 💥 NEW: Ithu screen chinna aanaalum shape maara vidathu */
     white-space: nowrap;
     flex-shrink: 0;
@@ -143,34 +150,36 @@ body {
    ============================ */
 .hero-text {
     text-align: center;
-    padding-top: 25px; /* Name-ku mela space */
-    margin-bottom: 50px; /* Name-ku keela space */
+    padding-top: 25px;
+    /* Name-ku mela space */
+    margin-bottom: 50px;
+    /* Name-ku keela space */
     width: 100%;
 }
 
 .name-container {
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
-    font-size: clamp(16px, 3.2vw, 55px); 
+    font-size: clamp(16px, 3.2vw, 55px);
 }
 
 .prefix {
     color: var(--primary-blue);
-    font-size: 0.5em; 
+    font-size: 0.5em;
     font-weight: 600;
     vertical-align: middle;
 }
 
 .main-name {
     color: var(--primary-red);
-    font-size: 1em; 
+    font-size: 1em;
     font-weight: 700;
     vertical-align: middle;
 }
 
 .suffix {
     color: var(--primary-blue);
-    font-size: 0.45em; 
+    font-size: 0.45em;
     font-weight: 600;
     vertical-align: middle;
 }
@@ -180,7 +189,8 @@ body {
    ============================ */
 .info-section {
     margin-bottom: 60px;
-    scroll-margin-top: 40px; /* Gives breathing room when navbar scrolls to section */
+    scroll-margin-top: 40px;
+    /* Gives breathing room when navbar scrolls to section */
 }
 
 .info-section h2 {
@@ -247,10 +257,12 @@ body {
 .skill-category {
     margin-bottom: 20px;
 }
+
 .skill-category h3 {
     color: var(--primary-red);
     margin-bottom: 5px;
 }
+
 .skill-category p {
     color: var(--text-dark);
     font-weight: 500;
@@ -282,7 +294,7 @@ body {
     margin-bottom: 8px;
 }
 
-.contact-box input, 
+.contact-box input,
 .contact-box textarea {
     width: 100%;
     padding: 12px;
@@ -348,11 +360,13 @@ body {
 .resume-btn {
     background-color: #ffffff;
     color: var(--primary-blue);
-    padding: 8px 18px; /* Small size */
+    padding: 8px 18px;
+    /* Small size */
     border-radius: 25px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem; /* Reduced font size */
+    font-size: 0.95rem;
+    /* Reduced font size */
     border: 2px solid var(--primary-blue);
     transition: all 0.3s ease;
     display: inline-block;
@@ -367,26 +381,29 @@ body {
    RIGHT SIDE (Fixed Image with 3D Shadow)
    ============================ */
 .image-section {
-    width: 32%; 
+    width: 32%;
     /* Manda idikama irukka height and top adjust panniruken */
-    height: calc(100vh - 80px); 
+    height: calc(100vh - 80px);
     position: sticky;
-    top: 80px; /* Banner (50px)-ku keela inum 30px gap koduthuruken */
+    top: 80px;
+    /* Banner (50px)-ku keela inum 30px gap koduthuruken */
     display: flex;
-    justify-content: flex-end; 
-    align-items: center; 
+    justify-content: flex-end;
+    align-items: center;
     background-color: #ffffff;
-    padding-right: 2%; 
-    z-index: 10; /* Image content-ku mela theliva nikka */
+    padding-right: 2%;
+    z-index: 10;
+    /* Image content-ku mela theliva nikka */
 }
 
 .image-section img {
     max-width: 100%;
-    max-height: calc(100vh - 80px); /* Container height-ku match aaga */
+    max-height: calc(100vh - 80px);
+    /* Container height-ku match aaga */
     object-fit: contain;
-    
+
     /* 3D Shadow Effect */
-    filter: drop-shadow(-15px 15px 25px rgba(26, 76, 204, 0.15)); 
+    filter: drop-shadow(-15px 15px 25px rgba(26, 76, 204, 0.15));
     transition: filter 0.4s ease, transform 0.4s ease;
 }
 
@@ -394,7 +411,7 @@ body {
 .image-section img:hover {
     filter: drop-shadow(-20px 20px 35px rgba(26, 76, 204, 0.25));
     /* Mela thookki, konjam perusaaga (3D feel) */
-    transform: translateY(-5px) scale(1.02); 
+    transform: translateY(-5px) scale(1.02);
 }
 
 /* ============================
@@ -402,22 +419,28 @@ body {
    ============================ */
 @media (max-width: 1100px) {
     .main-container {
-        flex-direction: column; 
+        flex-direction: column;
     }
-    .content-section, .image-section {
+
+    .content-section,
+    .image-section {
         width: 100%;
     }
+
     .image-section {
         height: auto;
-        position: static; 
+        position: static;
         padding: 40px 0 0 0;
-        justify-content: center; /* Center image on mobile */
+        justify-content: center;
+        /* Center image on mobile */
     }
+
     .image-section img {
-        height: auto; 
+        height: auto;
     }
+
     .name-container {
-        font-size: clamp(14px, 4.5vw, 35px); 
+        font-size: clamp(14px, 4.5vw, 35px);
     }
 }
 
@@ -452,7 +475,8 @@ body {
 .email-menu {
     display: none;
     position: absolute;
-    bottom: 130%; /* Positions it above the text */
+    bottom: 130%;
+    /* Positions it above the text */
     left: 0;
     background-color: #ffffff;
     min-width: 220px;
@@ -468,7 +492,8 @@ body {
     animation: popUp 0.3s ease-out;
 }
 
-.email-menu a, .email-menu .copy-btn {
+.email-menu a,
+.email-menu .copy-btn {
     color: var(--text-dark);
     padding: 12px 20px;
     text-decoration: none;
@@ -478,15 +503,23 @@ body {
     transition: background 0.2s, color 0.2s;
 }
 
-.email-menu a:hover, .email-menu .copy-btn:hover {
+.email-menu a:hover,
+.email-menu .copy-btn:hover {
     background-color: var(--light-blue-bg);
     color: var(--primary-blue);
     font-weight: 500;
 }
 
 @keyframes popUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ============================
@@ -495,14 +528,15 @@ body {
 .social-links-hero {
     display: flex;
     justify-content: center;
-    flex-wrap: nowrap; /* 💥 Madinjama eppovume straight line-la nikka */
+    flex-wrap: nowrap;
+    /* 💥 Madinjama eppovume straight line-la nikka */
     gap: 15px;
     margin-top: 20px;
 }
 
 .social-btn {
     padding: 8px 22px;
-    border-radius: 30px; 
+    border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
@@ -511,39 +545,47 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 /* 💥 NEW: Mobile-la screen chinna aagumbothu size auto-va reduce aaga */
 @media (max-width: 600px) {
     .social-links-hero {
-        gap: 6px; /* Buttons naduvula irukka gap-ah kuraikkirom */
+        gap: 6px;
+        /* Buttons naduvula irukka gap-ah kuraikkirom */
     }
+
     .social-btn {
-        padding: 6px 10px; /* Button-oda width/height-ah kuraikkirom */
-        font-size: 0.75rem; /* Text size-ah chinna aakkirom */
-        gap: 4px; /* Icon-kum text-kum ulla gap-ah kuraikkirom */
+        padding: 6px 10px;
+        /* Button-oda width/height-ah kuraikkirom */
+        font-size: 0.75rem;
+        /* Text size-ah chinna aakkirom */
+        gap: 4px;
+        /* Icon-kum text-kum ulla gap-ah kuraikkirom */
     }
 }
 
 /* LinkedIn Button Style */
 .linkedin-btn {
     background-color: #f0f6ff;
-    color: #0077b5; /* LinkedIn Official Blue */
+    color: #0077b5;
+    /* LinkedIn Official Blue */
     border: 1px solid #0077b5;
 }
 
 .linkedin-btn:hover {
     background-color: #0077b5;
     color: #ffffff;
-    transform: translateY(-2px); /* Chinna hover bounce effect */
+    transform: translateY(-2px);
+    /* Chinna hover bounce effect */
     box-shadow: 0 4px 10px rgba(0, 119, 181, 0.2);
 }
 
 /* GitHub Button Style */
 .github-btn {
     background-color: #f6f8fa;
-    color: #24292e; /* GitHub Official Dark */
+    color: #24292e;
+    /* GitHub Official Dark */
     border: 1px solid #24292e;
 }
 
@@ -557,7 +599,7 @@ body {
 /* Email Button Style (Red Theme to match your name) */
 .email-btn {
     background-color: #fdf2f2;
-    color: var(--primary-red); 
+    color: var(--primary-red);
     border: 1px solid var(--primary-red);
 }
 
@@ -574,7 +616,8 @@ body {
 #toastPopup {
     visibility: hidden;
     min-width: 250px;
-    background-color: var(--text-dark); /* Dark navy background */
+    background-color: var(--text-dark);
+    /* Dark navy background */
     color: #ffffff;
     text-align: center;
     border-radius: 8px;
@@ -583,7 +626,8 @@ body {
     z-index: 3000;
     left: 50%;
     bottom: 30px;
-    transform: translateX(-50%); /* Centers the popup perfectly */
+    transform: translateX(-50%);
+    /* Centers the popup perfectly */
     font-size: 0.95rem;
     font-weight: 500;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -594,7 +638,8 @@ body {
 #toastPopup.show {
     visibility: visible;
     opacity: 1;
-    bottom: 50px; /* Slides up slightly for animation */
+    bottom: 50px;
+    /* Slides up slightly for animation */
 }
 
 /* ============================
@@ -602,25 +647,23 @@ body {
    ============================ */
 .image-section img {
     max-width: 100%;
-    max-height: calc(100vh - 80px); 
+    max-height: calc(100vh - 80px);
     object-fit: contain;
-    
+
     /* 💥 PRO TRICK: Double Drop Shadow for realistic 3D depth */
     /* 1st part: Dark tight shadow | 2nd part: Darker blue soft shadow */
-    filter: drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) 
-            drop-shadow(-15px 15px 35px rgba(15, 35, 80, 0.35)); 
-            
+    filter: drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-15px 15px 35px rgba(15, 35, 80, 0.35));
+
     transition: filter 0.4s ease, transform 0.4s ease;
 }
 
 /* Hover pannumbothu 3D pop-up inum theliva theriyum */
 .image-section img:hover {
     /* Shadow inum spread aagi, image munnadi varum */
-    filter: drop-shadow(-8px 8px 15px rgba(0, 0, 0, 0.15)) 
-            drop-shadow(-25px 25px 45px rgba(15, 35, 80, 0.45));
-            
+    filter: drop-shadow(-8px 8px 15px rgba(0, 0, 0, 0.15)) drop-shadow(-25px 25px 45px rgba(15, 35, 80, 0.45));
+
     /* Mela thookki, konjam perusaaga (Perfect 3D feel) */
-    transform: translateY(-8px) scale(1.02); 
+    transform: translateY(-8px) scale(1.02);
 }
 
 /* ============================
@@ -628,16 +671,17 @@ body {
    ============================ */
 /* Default ah laptop-la mobile header theriya koodathu */
 .mobile-nav-header {
-    display: none; 
+    display: none;
 }
 
 /* Mobile Screen Size (< 768px) */
 @media (max-width: 768px) {
     .top-nav {
         padding: 12px 20px;
-        flex-direction: column; /* Row-va irunthatha column-ah maathrom */
+        flex-direction: column;
+        /* Row-va irunthatha column-ah maathrom */
     }
-    
+
     .mobile-nav-header {
         display: flex;
         justify-content: space-between;
@@ -661,7 +705,7 @@ body {
 
     /* Links-ah default ah hide pandrom */
     #navLinks {
-        display: none; 
+        display: none;
         flex-direction: column;
         width: 100%;
         padding-top: 15px;
@@ -670,7 +714,7 @@ body {
 
     /* JavaScript-la class add aanathum thelivavum */
     #navLinks.active {
-        display: flex; 
+        display: flex;
         border-top: 1px solid rgba(26, 76, 204, 0.1);
         margin-top: 10px;
     }
@@ -696,13 +740,15 @@ body {
    MOBILE TYPOGRAPHY & SPACING (Clean Look)
    ============================ */
 @media (max-width: 768px) {
+
     /* 1. Main Headings (Hero section name) */
     h1 {
-        font-size: 1.8rem !important; 
+        font-size: 1.8rem !important;
     }
 
     /* 2. Section Headings (Education, Skills, etc.) */
-    h2, .info-section h2 {
+    h2,
+    .info-section h2 {
         font-size: 1.4rem !important;
         margin-bottom: 15px !important;
     }
@@ -713,7 +759,10 @@ body {
     }
 
     /* 4. Normal Text & Paragraphs */
-    p, li, .email-text, .nav-item {
+    p,
+    li,
+    .email-text,
+    .nav-item {
         font-size: 0.9rem !important;
         line-height: 1.6 !important;
     }
@@ -728,6 +777,7 @@ body {
    FINAL CONTACT BOX FIX (Single Line & Font Size Fix)
    ============================ */
 @media (max-width: 768px) {
+
     /* Box veliya pogama correct-ah irukka */
     #contact {
         width: 100% !important;
@@ -745,10 +795,10 @@ body {
     #contact b {
         /* Size-ah inum konjam chinna aakkurom (Orey line-la pathurathukku) */
         font-size: clamp(9.5px, 2.8vw, 13px) !important;
-        
+
         /* 💥 MAGIC: Text eppovume madinjama orey straight line-la thaan nikkum */
         white-space: nowrap !important;
-        
+
         line-height: 1.8 !important;
     }
 
@@ -756,7 +806,109 @@ body {
     #contact p {
         max-width: 100% !important;
         overflow: hidden !important;
-        text-overflow: ellipsis !important; /* Idham pathalana azhaga "..." nu varum */
+        text-overflow: ellipsis !important;
+        /* Idham pathalana azhaga "..." nu varum */
         margin-bottom: 10px !important;
+    }
+}
+
+/* Banner Alignment (Text left, Buttons right) */
+#topBanner {
+    display: flex;
+    justify-content: space-between; /* Text left side, Buttons right side poga */
+    align-items: center; /* Rendu may center ah align aaga */
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    /* Unga existing banner CSS-la 'position: fixed' irukka nu check pannikonga */
+}
+
+/* Buttons Straight Line Alignment */
+.top-social-links {
+    display: flex;
+    gap: 15px; /* Buttons-ku naduvula irukura space */
+    align-items: center;
+}
+
+/* Mobile View Responsiveness */
+@media (max-width: 768px) {
+    #topBanner {
+        padding: 10px; /* Mobile-la space kurakkidalam */
+    }
+    
+    #bannerText {
+        font-size: 12px; /* Text chinnatha aagum */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; /* Text perusa iruntha ... nu varum */
+    }
+
+    .top-social-links {
+        gap: 6px; /* Buttons gap kuraiyum */
+    }
+
+    /* Mobile-la antha shape & color maarama size mattum chinnatha aaga */
+    .top-social-links .social-btn {
+        padding: 5px 8px !important; 
+        font-size: 11px !important;
+        white-space: nowrap; /* Text next line-ku poga koodathu */
+    }
+}
+
+/* Banner Alignment */
+#topBanner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    transition: all 0.3s ease; /* Smooth banner transition */
+}
+
+/* Initially Hide the Top Social Links */
+.top-social-links {
+    display: flex;
+    gap: 10px;
+    opacity: 0; /* Transparent ah irukum */
+    visibility: hidden; /* Click aagathu */
+    transform: translateY(-5px); /* Light ah mela irunthu keela vara maari effect */
+    transition: all 0.3s ease;
+}
+
+/* Scroll Pannumbothu (Name change aagum pothu) buttons theriya varum */
+#topBanner.scrolled .top-social-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Mini Buttons Style - Size Romba Chinnatha aaka */
+.mini-btn {
+    padding: 4px 10px !important; 
+    font-size: 11px !important;
+    white-space: nowrap;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+    #topBanner {
+        padding: 8px 10px;
+    }
+    
+    #bannerText {
+        font-size: 13px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; 
+    }
+
+    .top-social-links {
+        gap: 5px; /* Mobile la gap innum kammi aagum */
+    }
+
+    /* Mobile la buttons innum chinna size aagum */
+    .mini-btn {
+        padding: 3px 6px !important;
+        font-size: 9px !important; 
     }
 }
