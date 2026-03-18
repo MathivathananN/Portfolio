@@ -736,42 +736,23 @@ body {
     }
 }
 
-/* ============================
-   MOBILE TYPOGRAPHY & SPACING (Clean Look)
-   ============================ */
-@media (max-width: 768px) {
-
-    /* 1. Main Headings (Hero section name) */
-    h1 {
-        font-size: 1.8rem !important;
-    }
-
-    /* 2. Section Headings (Education, Skills, etc.) */
-    h2,
-    .info-section h2 {
-        font-size: 1.4rem !important;
-        margin-bottom: 15px !important;
-    }
-
-    /* 3. Sub-headings (Degree names, Job titles) */
-    h3 {
-        font-size: 1.15rem !important;
-    }
-
-    /* 4. Normal Text & Paragraphs */
-    p,
-    li,
-    .email-text,
-    .nav-item {
-        font-size: 0.9rem !important;
-        line-height: 1.6 !important;
-    }
-
-    /* 5. Section Padding (Mobile-la extra space thavirkka) */
+/* ==========================================
+       MOBILE SPACING FIX (Sections & Cards)
+       ========================================== */
     .info-section {
-        padding: 40px 15px !important;
+        margin-bottom: 25px !important; /* Adutha section-ku ulla gap kuraiyum */
+        padding: 10px 15px !important;
     }
-}
+
+    .info-section h2 {
+        margin-bottom: 12px !important; /* Heading-kum content-kum ulla gap */
+        padding-bottom: 5px !important;
+    }
+
+    .card {
+        margin-bottom: 12px !important; /* Rendu cards-ku naduvula irukka gap */
+        padding: 15px !important; /* Card kulla irukka gap-ah kurakkum */
+    }
 
 /* ============================
    FINAL CONTACT BOX FIX (Single Line & Font Size Fix)
@@ -973,5 +954,63 @@ body {
     .mini-btn {
         padding: 4px 6px !important;
         font-size: 9px !important; 
+    }
+}
+
+/* ==========================================
+   ULTIMATE MOBILE COMPACT VIEW (Max-width: 768px)
+   Itha unga CSS file-oda last-la paste pannunga
+   ========================================== */
+@media (max-width: 768px) {
+    
+    /* 1. DRASTICALLY REDUCE BLANK SPACES (GAPS) */
+    .content-section {
+        padding: 10px 4% 20px 4% !important; /* Side and bottom gaps-ah total ah kurakkuthu */
+    }
+    
+    .hero-text {
+        padding-top: 15px !important;
+        margin-bottom: 25px !important; /* Name-ku keela irukka periya space-ah kurakkuthu */
+    }
+
+    .info-section {
+        margin-bottom: 20px !important; /* Rendu topics (e.g., Skills -> Project) naduvula irukka gap */
+        padding: 0px 5px !important;
+    }
+
+    .card {
+        padding: 12px 15px !important; /* White box kulla irukka space */
+        margin-bottom: 12px !important; /* Rendu cards-ku naduvula irukka gap */
+    }
+
+    .info-section h2 {
+        margin-bottom: 10px !important; /* Title-kum content-kum gap */
+        padding-bottom: 4px !important;
+    }
+
+    .skill-category {
+        margin-bottom: 12px !important;
+    }
+
+    /* 2. REDUCE FONT SIZES FOR MOBILE */
+    .name-container {
+        font-size: clamp(14px, 5vw, 24px) !important; /* Name mobile-la correct aana chinna size-ku varum */
+    }
+
+    .info-section h2 {
+        font-size: 1.25rem !important; /* Main headings (Skills, Project, etc.) */
+    }
+
+    .card h3, .skill-category h3 {
+        font-size: 1.05rem !important; /* Sub-headings (Python, HTML, etc.) */
+    }
+
+    p, li, .company, .date, .project-desc, .skill-category p {
+        font-size: 0.85rem !important; /* Normal text ellam chinna size aagidum */
+        line-height: 1.5 !important;
+    }
+
+    .highlight {
+        font-size: 0.9rem !important;
     }
 }
