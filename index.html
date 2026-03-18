@@ -14,7 +14,6 @@
 
     <div class="full-width-banner" id="topBanner">
         <span id="bannerText">Welcome to Mathivathanan's Portfolio</span>
-
         <div class="top-social-links">
             <a href="https://github.com/mathivathanann" target="_blank"
                 class="social-btn github-btn mini-btn">GitHub</a>
@@ -29,13 +28,35 @@
 
         <div class="content-section">
 
+            <div class="hero-text">
+                <div class="profile-card" id="mainCard">
+                    <div class="name-details">
+                        <span class="prefix">Mr.</span>
+                        <span class="main-name">Mathivathanan N</span>
+                        <span class="suffix">, DAE., B.E-EEE.</span>
+                    </div>
+                    <div class="social-links-hero">
+                        <a href="https://github.com/mathivathanann" target="_blank"
+                            class="social-btn github-btn">GitHub</a>
+                        <a href="https://www.linkedin.com/in/mathivathanann" target="_blank"
+                            class="social-btn linkedin-btn">LinkedIn</a>
+                        <a href="mailto:mathivathanan.n@hotmail.com" class="social-btn email-btn"
+                            onclick="copyEmailAndShowToast()">Get in Touch</a>
+                    </div>
+
+                    <a href="Mathivathanan_Resume.pdf" download class="card-resume-btn">
+                        Download Resume
+                    </a>
+
+                </div>
+            </div>
+
             <header class="sticky-header">
-                <nav class="top-nav">
+                <nav class="top-nav" id="mainNav">
                     <div class="mobile-nav-header">
                         <span id="currentSectionText">Portfolio</span>
                         <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
                     </div>
-
                     <ul id="navLinks">
                         <li><a href="#courses" class="nav-item">Courses</a></li>
                         <li><a href="#education" class="nav-item">Education</a></li>
@@ -49,30 +70,6 @@
             </header>
 
             <main>
-                <div class="hero-text">
-                    <div class="name-container">
-                        <span class="prefix">Mr. </span>
-                        <span class="main-name">Mathivathanan N</span>
-                        <span class="suffix">, DAE., B.E-EEE.</span>
-                    </div>
-
-                    <div class="social-links-hero">
-                        <a href="https://github.com/mathivathanann" target="_blank" class="social-btn github-btn">
-                            GitHub
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/mathivathanann" target="_blank"
-                            class="social-btn linkedin-btn">
-                            LinkedIn
-                        </a>
-
-                        <a href="mailto:mathivathanan.n@hotmail.com" class="social-btn email-btn"
-                            onclick="copyEmailAndShowToast()">
-                            Get in Touch
-                        </a>
-                    </div>
-                </div>
-
                 <section id="courses" class="info-section">
                     <h2>Certifications & Courses</h2>
                     <div class="card">
@@ -215,10 +212,8 @@
                                 <span class="email-text" onclick="toggleEmailMenu()">mathivathanan.n@hotmail.com</span>
                                 <div class="email-menu" id="emailMenu">
                                     <span class="copy-btn" onclick="openMailApp()">📧 Open Mail App</span>
-
                                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mathivathanan.n@hotmail.com"
                                         target="_blank">🌐 Open in Gmail</a>
-
                                     <span class="copy-btn" onclick="copyEmailAndShowToast()">📋 Copy Email ID</span>
                                 </div>
                             </div>
@@ -230,12 +225,11 @@
                                 target="_blank">github.com/mathivathanann</a></p>
                     </div>
                 </section>
-
             </main>
         </div>
 
         <div class="image-section">
-            <img src="Profile.png" alt="Mathivathanan N Photo">
+            <img src="Profile.png" alt="Mathivathanan N Photo" id="profileImg">
         </div>
 
     </div>
@@ -243,201 +237,188 @@
     <div id="toastPopup">✅ Email ID copied to clipboard!</div>
 
     <script>
-        // ==========================================
-        // Global Lock Variable for Green Shadow
-        // ==========================================
+        /* ==========================================
+           PORTFOLIO INTERACTIVE LOGIC (FINAL STABLE)
+           ========================================== */
+
+        let lastScrollTop = 0;
         let isSuccessGlowActive = false;
+        let scrollTimeout; // 2 seconds timer-kaana variable
 
-        // Options menu-va open/close panna
-        function toggleEmailMenu() {
-            document.getElementById("emailMenu").classList.toggle("show");
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const profileImg = document.getElementById('profileImg');
+            const mainCard = document.getElementById('mainCard');
+            const topBanner = document.getElementById('topBanner');
+            const bannerText = document.getElementById('bannerText');
+            const mainNav = document.getElementById('mainNav');
 
-        // Veliya click panna menu close aagida
-        window.onclick = function (event) {
-            if (!event.target.matches('.email-text')) {
-                var dropdowns = document.getElementsByClassName("email-menu");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
+            // 1. SCROLL TRACKER (Banner & Timed Glow)
+            window.addEventListener('scroll', function () {
+                let st = window.pageYOffset || document.documentElement.scrollTop;
+
+                // A. Top Banner Logic
+                if (topBanner) {
+                    if (st > 100) {
+                        topBanner.classList.add('scrolled');
+                        if (bannerText) bannerText.textContent = "Mathivathanan N";
+                    } else {
+                        topBanner.classList.remove('scrolled');
+                        if (bannerText) bannerText.textContent = "Welcome to Mathivathanan's Portfolio";
                     }
                 }
-            }
-        }
 
-        // ==========================================
-        // Banner Text Change on Scroll Function (RESTORED)
-        // ==========================================
-        window.addEventListener('scroll', function () {
-            var banner = document.getElementById('topBanner');
-            var bannerText = document.getElementById('bannerText');
+                // B. Timed Glow Logic (Green on Up, Red on Down)
+                if (mainCard || mainNav) {
+                    if (st > lastScrollTop) {
+                        // Scrolling Down -> Red Glow
+                        if (mainCard) { mainCard.classList.add('glow-down'); mainCard.classList.remove('glow-up'); }
+                        if (mainNav) { mainNav.classList.add('nav-glow-red'); mainNav.classList.remove('nav-glow-green'); }
+                    } else {
+                        // Scrolling Up -> Green Glow
+                        if (mainCard) { mainCard.classList.add('glow-up'); mainCard.classList.remove('glow-down'); }
+                        if (mainNav) { mainNav.classList.add('nav-glow-green'); mainNav.classList.remove('nav-glow-red'); }
+                    }
 
-            if (window.scrollY > 100) {
-                banner.classList.add('scrolled');
-                // Scroll panna udane unga name maaridum
-                if (bannerText) bannerText.textContent = "Mathivathanan N";
-            } else {
-                banner.classList.remove('scrolled');
-                // Mela ponathum thirumba Welcome message vanthudum
-                if (bannerText) bannerText.textContent = "Welcome to Mathivathanan's Portfolio";
+                    // Timer: 2 Seconds aanathum glow-ah remove pannidum
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        if (mainCard) mainCard.classList.remove('glow-up', 'glow-down');
+                        if (mainNav) mainNav.classList.remove('nav-glow-green', 'nav-glow-red');
+                    }, 500);
+                }
+
+                lastScrollTop = st <= 0 ? 0 : st;
+            });
+
+            // 2. 💥 DUAL GLOW: IMAGE & CARD HOVER EFFECTS
+            function applyShadow(color) {
+                if (isSuccessGlowActive) return;
+
+                if (profileImg) {
+                    profileImg.style.filter = `drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px ${color})`;
+                }
+
+                if (mainCard) {
+                    mainCard.style.borderColor = color;
+                    mainCard.style.boxShadow = `0 10px 30px ${color}`;
+                    mainCard.classList.remove('glow-up', 'glow-down');
+                }
             }
+
+            function removeShadow() {
+                if (isSuccessGlowActive) return;
+                if (profileImg) profileImg.style.filter = "";
+                if (mainCard) {
+                    mainCard.style.borderColor = "";
+                    mainCard.style.boxShadow = "";
+                }
+            }
+
+            // Apply hover events to all buttons
+            document.querySelectorAll('.github-btn').forEach(b => {
+                b.addEventListener('mouseenter', () => applyShadow('rgba(36, 41, 46, 0.6)'));
+                b.addEventListener('mouseleave', removeShadow);
+            });
+            document.querySelectorAll('.linkedin-btn').forEach(b => {
+                b.addEventListener('mouseenter', () => applyShadow('rgba(0, 119, 181, 0.6)'));
+                b.addEventListener('mouseleave', removeShadow);
+            });
+            document.querySelectorAll('.email-btn').forEach(b => {
+                b.addEventListener('mouseenter', () => applyShadow('rgba(204, 0, 0, 0.6)'));
+                b.addEventListener('mouseleave', removeShadow);
+            });
+            document.querySelectorAll('.nav-resume-link, .card-resume-btn').forEach(b => {
+                b.addEventListener('mouseenter', () => applyShadow('rgba(26, 76, 204, 0.6)'));
+                b.addEventListener('mouseleave', removeShadow);
+            });
+
+            // 3. SECTION TRACKER (Dynamic Nav Text for Mobile)
+            const currentSectionText = document.getElementById("currentSectionText");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && currentSectionText) {
+                        let id = entry.target.getAttribute("id");
+                        currentSectionText.textContent = id.charAt(0).toUpperCase() + id.slice(1);
+                    }
+                });
+            }, { rootMargin: "-20% 0px -60% 0px" });
+
+            document.querySelectorAll("section").forEach((sec) => observer.observe(sec));
+
+            // Close mobile menu on clicking a nav item
+            document.querySelectorAll('.nav-item').forEach(function (item) {
+                item.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        const navLinks = document.getElementById("navLinks");
+                        if (navLinks) navLinks.classList.remove("active");
+                    }
+                });
+            });
         });
 
-        // ==========================================
-        // Dynamic Popup Function
-        // ==========================================
-        function showToastMessage(message) {
-            var toast = document.getElementById("toastPopup");
-            if (toast) {
-                toast.innerHTML = message;
-                toast.classList.add("show");
-                setTimeout(function () {
-                    toast.classList.remove("show");
-                }, 3500);
-            }
-        }
-
-        // ==========================================
-        // 1. Copy Email Click Pannum Pothu
-        // ==========================================
+        // 4. EMAIL COPY & SUCCESS GLOW
         function copyEmailAndShowToast() {
-            var emailID = "mathivathanan.n@hotmail.com";
-
-            try {
-                navigator.clipboard.writeText(emailID);
-            } catch (err) {
-                var tempInput = document.createElement("input");
+            const emailID = "mathivathanan.n@hotmail.com";
+            navigator.clipboard.writeText(emailID).then(() => {
+                showToastMessage("✅ Email ID copied to clipboard!");
+            }).catch(() => {
+                // Fallback
+                const tempInput = document.createElement("input");
                 tempInput.value = emailID;
                 document.body.appendChild(tempInput);
                 tempInput.select();
                 document.execCommand("copy");
                 document.body.removeChild(tempInput);
-            }
+                showToastMessage("✅ Email ID copied to clipboard!");
+            });
 
-            showToastMessage("✅ Email ID copied to clipboard!");
-
-            var emailMenu = document.getElementById("emailMenu");
+            const emailMenu = document.getElementById("emailMenu");
             if (emailMenu) emailMenu.classList.remove("show");
 
-            // 💥 FIXED: Bright Neon Green Shadow & Perfect Reset Logic
-            var profileImg = document.querySelector('.image-section img');
-            if (profileImg) {
-                isSuccessGlowActive = true; 
-                // Bright Neon Green with larger spread
-                profileImg.style.filter = "drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-20px 20px 55px rgba(0, 255, 64, 0.95))";
-
-                setTimeout(function () {
-                    isSuccessGlowActive = false; 
-                    
-                    // Lock edutha aprom mouse yenga irukku nu check pandrom
-                    let hoveredBtn = document.querySelector('.social-btn:hover, .nav-resume-link:hover');
-                    
-                    if (hoveredBtn) {
-                        // Mouse innum button mela thaan irukku na, antha button color-ah thirumba kondu varom
-                        if (hoveredBtn.classList.contains('github-btn')) profileImg.style.filter = 'drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(36, 41, 46, 0.5))';
-                        else if (hoveredBtn.classList.contains('linkedin-btn')) profileImg.style.filter = 'drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(0, 119, 181, 0.5))';
-                        else if (hoveredBtn.classList.contains('email-btn')) profileImg.style.filter = 'drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(204, 0, 0, 0.5))';
-                        else if (hoveredBtn.classList.contains('nav-resume-link')) profileImg.style.filter = 'drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(26, 76, 204, 0.5))';
-                    } else {
-                        // Mouse veliya poiruchu na normal state-ku mathirom
-                        profileImg.style.filter = "";
-                    }
-                }, 2000); // 2 Seconds
+            // Success Glow (Bright Green)
+            const img = document.getElementById('profileImg');
+            if (img) {
+                isSuccessGlowActive = true;
+                img.style.filter = "drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(0px 0px 65px rgba(0, 255, 64, 0.95))";
+                setTimeout(() => {
+                    isSuccessGlowActive = false;
+                    img.style.filter = "";
+                }, 2000);
             }
         }
 
-        // ==========================================
-        // 2. Open Mail App Click Pannum Pothu
-        // ==========================================
+        function showToastMessage(message) {
+            const toast = document.getElementById("toastPopup");
+            if (toast) {
+                toast.innerHTML = message;
+                toast.classList.add("show");
+                setTimeout(() => toast.classList.remove("show"), 3500);
+            }
+        }
+
         function openMailApp() {
             window.location.href = "mailto:mathivathanan.n@hotmail.com";
-            showToastMessage("⏳ Opening Mail App... <br><span style='font-size: 0.85rem; color: #cbd5e1;'>(If it doesn't open, please use the 'Copy Email ID' option)</span>");
-
-            var emailMenu = document.getElementById("emailMenu");
+            showToastMessage("⏳ Opening Mail App...");
+            const emailMenu = document.getElementById("emailMenu");
             if (emailMenu) emailMenu.classList.remove("show");
         }
 
-        // ==========================================
-        // 💥 FIXED: MAGIC SHADOW EFFECT (Selects ALL Buttons)
-        // ==========================================
-        document.addEventListener("DOMContentLoaded", function () {
-            var profileImg = document.querySelector('.image-section img');
+        // 5. MOBILE MENU & DROPDOWN TOGGLES
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById("navLinks");
+            if (navLinks) navLinks.classList.toggle("active");
+        }
 
-            function applyColorShadow(color) {
-                if (isSuccessGlowActive) return;
-                profileImg.style.filter = `drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px ${color})`;
+        function toggleEmailMenu() {
+            const emailMenu = document.getElementById("emailMenu");
+            if (emailMenu) emailMenu.classList.toggle("show");
+        }
+
+        window.onclick = function (e) {
+            if (!e.target.matches('.email-text')) {
+                document.querySelectorAll(".email-menu.show").forEach(m => m.classList.remove('show'));
             }
-
-            function removeColorShadow() {
-                if (isSuccessGlowActive) return;
-                profileImg.style.filter = "";
-            }
-
-            // querySelectorAll pottu ella buttons-aiyum edukurom (Top Banner AND Hero section)
-            document.querySelectorAll('.github-btn').forEach(btn => {
-                btn.addEventListener('mouseenter', () => applyColorShadow('rgba(36, 41, 46, 0.5)'));
-                btn.addEventListener('mouseleave', removeColorShadow);
-            });
-
-            document.querySelectorAll('.linkedin-btn').forEach(btn => {
-                btn.addEventListener('mouseenter', () => applyColorShadow('rgba(0, 119, 181, 0.5)'));
-                btn.addEventListener('mouseleave', removeColorShadow);
-            });
-
-            document.querySelectorAll('.email-btn').forEach(btn => {
-                btn.addEventListener('mouseenter', () => applyColorShadow('rgba(204, 0, 0, 0.5)'));
-                btn.addEventListener('mouseleave', removeColorShadow);
-            });
-
-            document.querySelectorAll('.nav-resume-link').forEach(btn => {
-                btn.addEventListener('mouseenter', () => applyColorShadow('rgba(26, 76, 204, 0.5)'));
-                btn.addEventListener('mouseleave', removeColorShadow);
-            });
-        });
-
-        // ==========================================
-        // MOBILE NAVBAR & SCROLL TRACKER
-        // ==========================================
-        document.addEventListener("DOMContentLoaded", function () {
-            window.toggleMobileMenu = function () {
-                document.getElementById("navLinks").classList.toggle("active");
-            }
-
-            var navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(function (item) {
-                item.addEventListener('click', function () {
-                    if (window.innerWidth <= 768) {
-                        document.getElementById("navLinks").classList.remove("active");
-                    }
-                });
-            });
-
-            var sections = document.querySelectorAll("section");
-            var currentSectionText = document.getElementById("currentSectionText");
-
-            var observerOptions = {
-                root: null,
-                rootMargin: "-20% 0px -60% 0px",
-                threshold: 0
-            };
-
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        var currentId = entry.target.getAttribute("id");
-                        if (currentId && currentSectionText) {
-                            var sectionName = currentId.charAt(0).toUpperCase() + currentId.slice(1);
-                            currentSectionText.textContent = sectionName;
-                        }
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(function (section) {
-                observer.observe(section);
-            });
-        });
+        }
     </script>
 </body>
 
