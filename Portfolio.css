@@ -1,8 +1,7 @@
-/* Basic Page Setup */
-html {
-    scroll-behavior: smooth;
-    /* Enables smooth scrolling when navbar links are clicked */
-}
+/* ==========================================
+   1. BASIC SETUP & COLORS
+   ========================================== */
+html { scroll-behavior: smooth; }
 
 :root {
     --primary-red: #cc0000;
@@ -11,20 +10,18 @@ html {
     --text-dark: #2a3b5c;
     --text-light: #4a5a7a;
     --bg-light: #fdfdfd;
+    --neon-green: #00ff40; /* Added Neon Green for Glow */
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.6;
-    overflow-x: hidden;
+    /* hidden iruntha sticky work aagathu, so 'clip' use pandrom */
+    overflow-x: clip; 
 }
 
 .main-container {
@@ -33,21 +30,18 @@ body {
     min-height: 100vh;
 }
 
-/* ============================
-   LEFT SIDE (Content) 
-   ============================ */
+/* ==========================================
+   2. LEFT CONTENT & HEADER (Menu Bar & Banner)
+   ========================================== */
 .content-section {
     width: 68%;
     padding: 0 5% 50px 6%;
-    /* Top padding removed to make header flush */
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-/* ============================
-   FULL WIDTH STICKY BANNER
-   ============================ */
+/* Sticky Banner Top-la Nikka */
 .full-width-banner {
     position: sticky;
     top: 0;
@@ -58,35 +52,52 @@ body {
     color: var(--primary-red);
     display: flex;
     align-items: center;
-    justify-content: center;
-    /* Initial ah center-la irukum */
-    white-space: nowrap;
-    overflow: hidden;
+    justify-content: space-between;
+    padding: 10px 20px;
     font-size: clamp(12px, 2.5vw, 1.15rem);
     font-weight: 600;
     letter-spacing: 0.5px;
     z-index: 2000;
     box-shadow: 0 2px 10px rgba(26, 76, 204, 0.1);
     transition: all 0.4s ease;
-    /* Smooth-ah left-ku poga transition */
-    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-/* Scroll aanathukku aprom intha style apply aagum */
 .full-width-banner.scrolled {
-    justify-content: flex-start;
-    /* Text ah left side ku thallidum */
-    padding-left: 6%;
-    /* Left-la irunthu konjam gap */
-    background-color: #ffffff;
-    /* Scroll aanathum banner color white-ah maara (optional, but looks good) */
+    background-color: var(--light-blue-bg) !important;
     border-bottom: 1px solid var(--light-blue-bg);
 }
 
+#bannerText { white-space: nowrap; overflow: hidden; }
 
-/* ============================
-   STICKY HEADER (Navbar Only)
-   ============================ */
+/* Top Mini Buttons */
+.top-social-links {
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; 
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+#topBanner.scrolled .top-social-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.mini-btn {
+    padding: 4px 10px !important; 
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* Sticky Navbar (Menu Box) */
 .sticky-header {
     position: sticky;
     top: 50px;
@@ -98,7 +109,6 @@ body {
     border-bottom: 2px solid rgba(26, 76, 204, 0.05);
 }
 
-/* Navbar styles remain same */
 .top-nav {
     background-color: #ffffff;
     padding: 12px 25px;
@@ -106,6 +116,7 @@ body {
     box-shadow: 0 4px 15px rgba(26, 76, 204, 0.08);
     width: 100%;
     border: 1px solid var(--light-blue-bg);
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .top-nav ul {
@@ -125,72 +136,124 @@ body {
     transition: all 0.3s ease;
 }
 
-.top-nav a:hover {
-    color: var(--primary-red);
-}
+.top-nav a:hover { color: var(--primary-red); }
 
+/* Resume Button Design */
 .nav-resume-link {
     background-color: var(--primary-blue);
     color: #ffffff !important;
     padding: 6px 16px;
     border-radius: 20px;
     font-weight: 600 !important;
-
-    /* 💥 NEW: Ithu screen chinna aanaalum shape maara vidathu */
     white-space: nowrap;
     flex-shrink: 0;
 }
+.nav-resume-link:hover { background-color: var(--primary-red) !important; }
 
-.nav-resume-link:hover {
-    background-color: var(--primary-red) !important;
-}
+.mobile-nav-header { display: none; }
 
-/* ============================
-   NAME STYLING (Now scrolls with content)
-   ============================ */
+/* ==========================================
+   3. PROFILE CARD & HERO SECTION
+   ========================================== */
 .hero-text {
     text-align: center;
     padding-top: 25px;
-    /* Name-ku mela space */
     margin-bottom: 50px;
-    /* Name-ku keela space */
     width: 100%;
+    display: flex; /* Centering the card */
+    justify-content: center; 
 }
 
-.name-container {
+/* Updated Profile Card Design */
+.profile-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 550px;
+    text-align: center;
+    /* UPDATE: Added soft grey shadow as requested */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
+    border: 2px solid transparent; 
+    transition: all 0.3s ease;
+    position: relative; /* For proper z-indexing if needed */
+}
+
+/* Name Container inside Card */
+.name-container, .name-details { 
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; /* Yentha screen-layum line break aagathu */
+    justify-content: center !important;
+    align-items: baseline !important; /* Ellame orey straight line-la nikka */
+    width: 100% !important;
+    white-space: nowrap !important;
+    gap: 4px; /* Word-ku naduvula chinna space */
+}
+
+/* --- NAME PREFIX & SUFFIX SIZE REDUCTION --- */
+.prefix { 
+    color: var(--primary-blue); 
+    font-weight: 600; 
+    /* Font size-ah konjam koraichu, 'clamp' use panni responsive aakirom */
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem) !important; 
+    vertical-align: middle;
+}
+
+.suffix { 
+    color: var(--primary-blue); 
+    font-weight: 600; 
+    /* Suffix-um chinnatha aakiyachu */
+    font-size: clamp(0.65rem, 2.2vw, 0.85rem) !important; 
+    vertical-align: middle;
+}
+
+/* Name prominent-ah irukkuratha confirm pannikirom */
+.main-name { 
+    color: var(--primary-red); 
+    font-weight: 700; 
+    font-size: clamp(1.2rem, 5vw, 2.2rem) !important; 
+    vertical-align: middle;
+}
+
+/* Hero Social Buttons */
+.social-links-hero {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-btn {
+    padding: 8px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     white-space: nowrap;
-    overflow: hidden;
-    font-size: clamp(16px, 3.2vw, 55px);
 }
 
-.prefix {
-    color: var(--primary-blue);
-    font-size: 0.5em;
-    font-weight: 600;
-    vertical-align: middle;
-}
+.linkedin-btn { background-color: #f0f6ff; color: #0077b5; border: 1px solid #0077b5; }
+.linkedin-btn:hover { background-color: #0077b5; color: #ffffff; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 119, 181, 0.2); }
 
-.main-name {
-    color: var(--primary-red);
-    font-size: 1em;
-    font-weight: 700;
-    vertical-align: middle;
-}
+.github-btn { background-color: #f6f8fa; color: #24292e; border: 1px solid #24292e; }
+.github-btn:hover { background-color: #24292e; color: #ffffff; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(36, 41, 46, 0.2); }
 
-.suffix {
-    color: var(--primary-blue);
-    font-size: 0.45em;
-    font-weight: 600;
-    vertical-align: middle;
-}
+.email-btn { background-color: #fdf2f2; color: var(--primary-red); border: 1px solid var(--primary-red); }
+.email-btn:hover { background-color: var(--primary-red); color: #ffffff; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(204, 0, 0, 0.2); }
 
-/* ============================
-   SECTIONS & CARDS
-   ============================ */
+/* ==========================================
+   4. MAIN CONTENT (Cards, Skills Sections)
+   ========================================== */
 .info-section {
     margin-bottom: 60px;
     scroll-margin-top: 40px;
-    /* Gives breathing room when navbar scrolls to section */
 }
 
 .info-section h2 {
@@ -211,67 +274,21 @@ body {
     box-shadow: 0 4px 12px rgba(26, 76, 204, 0.06);
 }
 
-.card h3 {
-    font-size: 1.4rem;
-    color: var(--primary-red);
-    margin-bottom: 5px;
-}
+.card h3 { font-size: 1.4rem; color: var(--primary-red); margin-bottom: 5px; }
+.company { font-weight: 600; color: var(--text-dark); font-size: 1.1rem; text-align: justify; }
+.date { color: var(--text-light); font-size: 0.95rem; margin-bottom: 10px; font-style: italic; }
+.highlight { font-weight: 700; color: var(--primary-blue); margin-top: 5px; }
+.card ul { margin-top: 10px; padding-left: 20px; color: var(--text-light); }
+.card ul li { margin-bottom: 8px; }
+.project-desc { color: var(--text-light); line-height: 1.8; text-align: justify; }
 
-.company {
-    font-weight: 600;
-    color: var(--text-dark);
-    font-size: 1.1rem;
-    text-align: justify;
-}
+.skill-category { margin-bottom: 20px; }
+.skill-category h3 { color: var(--primary-red); margin-bottom: 5px; }
+.skill-category p { color: var(--text-dark); font-weight: 500; line-height: 1.8; }
 
-.date {
-    color: var(--text-light);
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-    font-style: italic;
-}
-
-.highlight {
-    font-weight: 700;
-    color: var(--primary-blue);
-    margin-top: 5px;
-}
-
-.card ul {
-    margin-top: 10px;
-    padding-left: 20px;
-    color: var(--text-light);
-}
-
-.card ul li {
-    margin-bottom: 8px;
-}
-
-.project-desc {
-    color: var(--text-light);
-    line-height: 1.8;
-    text-align: justify;
-}
-
-/* Skills Formatting */
-.skill-category {
-    margin-bottom: 20px;
-}
-
-.skill-category h3 {
-    color: var(--primary-red);
-    margin-bottom: 5px;
-}
-
-.skill-category p {
-    color: var(--text-dark);
-    font-weight: 500;
-    line-height: 1.8;
-}
-
-/* ============================
-   CONTACT SECTION
-   ============================ */
+/* ==========================================
+   5. CONTACT BOX & DESKTOP EMAIL MENU
+   ========================================== */
 .contact-box {
     background-color: #ffffff;
     padding: 30px;
@@ -281,202 +298,27 @@ body {
     margin-bottom: 30px;
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-}
+.input-group { display: flex; flex-direction: column; margin-bottom: 20px; }
+.input-group label { font-size: 1rem; color: var(--primary-blue); font-weight: 600; margin-bottom: 8px; }
+.contact-box input, .contact-box textarea { width: 100%; padding: 12px; border: 1px solid #ccd6e6; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 1rem; background-color: #f9fbff; }
+.submit-btn { width: 100%; background-color: var(--primary-blue); color: #ffffff; padding: 15px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+.submit-btn:hover { background-color: var(--primary-red); }
 
-.input-group label {
-    font-size: 1rem;
-    color: var(--primary-blue);
-    font-weight: 600;
-    margin-bottom: 8px;
-}
+.contact-details { background-color: var(--light-blue-bg); padding: 25px; border-radius: 12px; }
+.contact-details p { margin-bottom: 12px; color: var(--text-dark); line-height: 1.6; }
+.contact-details a { color: var(--primary-blue); font-weight: 600; text-decoration: none; }
+.contact-details a:hover { color: var(--primary-red); text-decoration: underline; }
 
-.contact-box input,
-.contact-box textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccd6e6;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    background-color: #f9fbff;
-}
+.contact-line { margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--text-dark); }
+.email-dropdown { position: relative; display: inline-flex; }
+.email-text { color: var(--primary-blue); font-weight: 600; cursor: pointer; text-decoration: underline; transition: color 0.3s ease; }
+.email-text:hover { color: var(--primary-red); }
 
-.submit-btn {
-    width: 100%;
-    background-color: var(--primary-blue);
-    color: #ffffff;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.submit-btn:hover {
-    background-color: var(--primary-red);
-}
-
-.contact-details {
-    background-color: var(--light-blue-bg);
-    padding: 25px;
-    border-radius: 12px;
-}
-
-.contact-details p {
-    margin-bottom: 12px;
-    color: var(--text-dark);
-    line-height: 1.6;
-}
-
-.contact-details a {
-    color: var(--primary-blue);
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.contact-details a:hover {
-    color: var(--primary-red);
-    text-decoration: underline;
-}
-
-/* ============================
-   RESUME BUTTON (Small Size at Bottom)
-   ============================ */
-.center-align {
-    text-align: center;
-    padding-top: 20px;
-}
-
-.center-align p {
-    margin-bottom: 15px;
-    color: var(--text-light);
-}
-
-.resume-btn {
-    background-color: #ffffff;
-    color: var(--primary-blue);
-    padding: 8px 18px;
-    /* Small size */
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    /* Reduced font size */
-    border: 2px solid var(--primary-blue);
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.resume-btn:hover {
-    background-color: var(--primary-blue);
-    color: #ffffff;
-}
-
-/* ============================
-   RIGHT SIDE (Fixed Image with 3D Shadow)
-   ============================ */
-.image-section {
-    width: 32%;
-    /* Manda idikama irukka height and top adjust panniruken */
-    height: calc(100vh - 80px);
-    position: sticky;
-    top: 80px;
-    /* Banner (50px)-ku keela inum 30px gap koduthuruken */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: #ffffff;
-    padding-right: 2%;
-    z-index: 10;
-    /* Image content-ku mela theliva nikka */
-}
-
-.image-section img {
-    max-width: 100%;
-    max-height: calc(100vh - 80px);
-    /* Container height-ku match aaga */
-    object-fit: contain;
-
-    /* 3D Shadow Effect */
-    filter: drop-shadow(-15px 15px 25px rgba(26, 76, 204, 0.15));
-    transition: filter 0.4s ease, transform 0.4s ease;
-}
-
-/* Hover pannumbothu 3D pop-up aaga */
-.image-section img:hover {
-    filter: drop-shadow(-20px 20px 35px rgba(26, 76, 204, 0.25));
-    /* Mela thookki, konjam perusaaga (3D feel) */
-    transform: translateY(-5px) scale(1.02);
-}
-
-/* ============================
-   MOBILE RESPONSIVENESS
-   ============================ */
-@media (max-width: 1100px) {
-    .main-container {
-        flex-direction: column;
-    }
-
-    .content-section,
-    .image-section {
-        width: 100%;
-    }
-
-    .image-section {
-        height: auto;
-        position: static;
-        padding: 40px 0 0 0;
-        justify-content: center;
-        /* Center image on mobile */
-    }
-
-    .image-section img {
-        height: auto;
-    }
-
-    .name-container {
-        font-size: clamp(14px, 4.5vw, 35px);
-    }
-}
-
-/* ============================
-   EMAIL DROPDOWN STYLING
-   ============================ */
-.contact-line {
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-dark);
-}
-
-.email-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.email-text {
-    color: var(--primary-blue);
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: underline;
-    transition: color 0.3s ease;
-}
-
-.email-text:hover {
-    color: var(--primary-red);
-}
-
+/* Desktop Email Popup Menu */
 .email-menu {
     display: none;
     position: absolute;
     bottom: 130%;
-    /* Positions it above the text */
     left: 0;
     background-color: #ffffff;
     min-width: 220px;
@@ -487,137 +329,49 @@ body {
     padding: 8px 0;
 }
 
-.email-menu.show {
-    display: block;
-    animation: popUp 0.3s ease-out;
-}
-
-.email-menu a,
-.email-menu .copy-btn {
-    color: var(--text-dark);
-    padding: 12px 20px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-}
-
-.email-menu a:hover,
-.email-menu .copy-btn:hover {
-    background-color: var(--light-blue-bg);
-    color: var(--primary-blue);
-    font-weight: 500;
-}
+.email-menu.show { display: block; animation: popUp 0.3s ease-out; }
+.email-menu a, .email-menu .copy-btn { color: var(--text-dark); padding: 12px 20px; text-decoration: none; display: block; font-size: 0.95rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.email-menu a:hover, .email-menu .copy-btn:hover { background-color: var(--light-blue-bg); color: var(--primary-blue); font-weight: 500; }
 
 @keyframes popUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============================
-   SOCIAL LINKS (HERO SECTION)
-   ============================ */
-.social-links-hero {
+/* ==========================================
+   6. DESKTOP RIGHT SIDE IMAGE & TOAST POPUP
+   ========================================== */
+.image-section {
+    width: 32%;
+    height: calc(100vh - 80px);
+    position: sticky;
+    top: 80px;
     display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    /* 💥 Madinjama eppovume straight line-la nikka */
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social-btn {
-    padding: 8px 22px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    display: flex;
+    justify-content: flex-end;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
-    white-space: nowrap;
+    background-color: #ffffff;
+    padding-right: 2%;
+    z-index: 10;
 }
 
-/* 💥 NEW: Mobile-la screen chinna aagumbothu size auto-va reduce aaga */
-@media (max-width: 600px) {
-    .social-links-hero {
-        gap: 6px;
-        /* Buttons naduvula irukka gap-ah kuraikkirom */
-    }
-
-    .social-btn {
-        padding: 6px 10px;
-        /* Button-oda width/height-ah kuraikkirom */
-        font-size: 0.75rem;
-        /* Text size-ah chinna aakkirom */
-        gap: 4px;
-        /* Icon-kum text-kum ulla gap-ah kuraikkirom */
-    }
+.image-section img {
+    max-width: 100%;
+    max-height: calc(100vh - 80px);
+    object-fit: contain;
+    /* Smooth Base 3D Shadow Desktop-ku */
+    filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.15)) drop-shadow(-8px 8px 25px rgba(15, 35, 80, 0.25));
+    transition: filter 0.4s ease, transform 0.4s ease, opacity 0.3s ease;
 }
 
-/* LinkedIn Button Style */
-.linkedin-btn {
-    background-color: #f0f6ff;
-    color: #0077b5;
-    /* LinkedIn Official Blue */
-    border: 1px solid #0077b5;
+.image-section img:hover {
+    filter: drop-shadow(-8px 8px 15px rgba(0, 0, 0, 0.15)) drop-shadow(-25px 25px 45px rgba(15, 35, 80, 0.45));
+    transform: translateY(-8px) scale(1.02);
 }
 
-.linkedin-btn:hover {
-    background-color: #0077b5;
-    color: #ffffff;
-    transform: translateY(-2px);
-    /* Chinna hover bounce effect */
-    box-shadow: 0 4px 10px rgba(0, 119, 181, 0.2);
-}
-
-/* GitHub Button Style */
-.github-btn {
-    background-color: #f6f8fa;
-    color: #24292e;
-    /* GitHub Official Dark */
-    border: 1px solid #24292e;
-}
-
-.github-btn:hover {
-    background-color: #24292e;
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(36, 41, 46, 0.2);
-}
-
-/* Email Button Style (Red Theme to match your name) */
-.email-btn {
-    background-color: #fdf2f2;
-    color: var(--primary-red);
-    border: 1px solid var(--primary-red);
-}
-
-.email-btn:hover {
-    background-color: var(--primary-red);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(204, 0, 0, 0.2);
-}
-
-/* ============================
-   TOAST POPUP STYLING
-   ============================ */
 #toastPopup {
     visibility: hidden;
     min-width: 250px;
     background-color: var(--text-dark);
-    /* Dark navy background */
     color: #ffffff;
     text-align: center;
     border-radius: 8px;
@@ -627,7 +381,6 @@ body {
     left: 50%;
     bottom: 30px;
     transform: translateX(-50%);
-    /* Centers the popup perfectly */
     font-size: 0.95rem;
     font-weight: 500;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -635,382 +388,310 @@ body {
     transition: opacity 0.3s ease, bottom 0.3s ease;
 }
 
-#toastPopup.show {
-    visibility: visible;
-    opacity: 1;
-    bottom: 50px;
-    /* Slides up slightly for animation */
-}
+#toastPopup.show { visibility: visible; opacity: 1; bottom: 50px; }
 
-/* ============================
-   RIGHT SIDE (Perfect 3D Shadow Image)
-   ============================ */
-.image-section img {
-    max-width: 100%;
-    max-height: calc(100vh - 80px);
-    object-fit: contain;
-
-    /* 💥 PRO TRICK: Double Drop Shadow for realistic 3D depth */
-    /* 1st part: Dark tight shadow | 2nd part: Darker blue soft shadow */
-    filter: drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-15px 15px 35px rgba(15, 35, 80, 0.35));
-
-    transition: filter 0.4s ease, transform 0.4s ease;
-}
-
-/* Hover pannumbothu 3D pop-up inum theliva theriyum */
-.image-section img:hover {
-    /* Shadow inum spread aagi, image munnadi varum */
-    filter: drop-shadow(-8px 8px 15px rgba(0, 0, 0, 0.15)) drop-shadow(-25px 25px 45px rgba(15, 35, 80, 0.45));
-
-    /* Mela thookki, konjam perusaaga (Perfect 3D feel) */
-    transform: translateY(-8px) scale(1.02);
-}
-
-/* ============================
-   MOBILE RESPONSIVE NAVBAR
-   ============================ */
-/* Default ah laptop-la mobile header theriya koodathu */
-.mobile-nav-header {
-    display: none;
-}
-
-/* Mobile Screen Size (< 768px) */
-@media (max-width: 768px) {
-    .top-nav {
-        padding: 12px 20px;
-        flex-direction: column;
-        /* Row-va irunthatha column-ah maathrom */
-    }
-
-    .mobile-nav-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        color: var(--primary-blue);
-        font-weight: 700;
-        font-size: 1.1rem;
-        letter-spacing: 0.5px;
-    }
-
-    .menu-toggle {
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--primary-red);
-        cursor: pointer;
-        padding: 0;
-        line-height: 1;
-    }
-
-    /* Links-ah default ah hide pandrom */
-    #navLinks {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        padding-top: 15px;
-        gap: 15px;
-    }
-
-    /* JavaScript-la class add aanathum thelivavum */
-    #navLinks.active {
-        display: flex;
-        border-top: 1px solid rgba(26, 76, 204, 0.1);
-        margin-top: 10px;
-    }
-
-    .top-nav ul li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .top-nav a {
-        display: block;
-        padding: 8px 0;
-    }
-
-    .nav-resume-link {
-        display: inline-block;
-        width: auto;
-        margin-top: 5px;
-    }
+/* ==========================================
+   7. TABLET & LAPTOP RESPONSIVE
+   ========================================== */
+@media (max-width: 1100px) {
+    .main-container { flex-direction: column; }
+    .content-section, .image-section { width: 100%; }
+    .image-section { height: auto; position: static; padding: 40px 0 0 0; justify-content: center; }
+    .image-section img { height: auto; }
 }
 
 /* ==========================================
-       MOBILE SPACING FIX (Sections & Cards)
-       ========================================== */
-    .info-section {
-        margin-bottom: 25px !important; /* Adutha section-ku ulla gap kuraiyum */
-        padding: 10px 15px !important;
-    }
-
-    .info-section h2 {
-        margin-bottom: 12px !important; /* Heading-kum content-kum ulla gap */
-        padding-bottom: 5px !important;
-    }
-
-    .card {
-        margin-bottom: 12px !important; /* Rendu cards-ku naduvula irukka gap */
-        padding: 15px !important; /* Card kulla irukka gap-ah kurakkum */
-    }
-
-/* ============================
-   FINAL CONTACT BOX FIX (Single Line & Font Size Fix)
-   ============================ */
+   8. MOBILE MENU & COMPACT SIZES (Max 768px)
+   ========================================== */
 @media (max-width: 768px) {
+    /* Navbar & Hamburger Menu */
+    .top-nav { padding: 8px 15px !important; border-radius: 25px !important; flex-direction: column; }
+    .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; width: 100%; color: var(--primary-blue); font-weight: 700; font-size: 0.95rem !important; }
+    .menu-toggle { background: none; border: none; font-size: 1.3rem !important; color: var(--primary-red); cursor: pointer; padding: 0; }
+    #navLinks { display: none; flex-direction: column; width: 100%; padding-top: 15px; gap: 15px; }
+    #navLinks.active { display: flex; border-top: 1px solid rgba(26, 76, 204, 0.1); margin-top: 10px; }
+    .top-nav ul li { width: 100%; text-align: center; }
+    .top-nav a { display: block; padding: 6px 0 !important; font-size: 0.85rem !important; }
+    .nav-resume-link { padding: 5px 12px !important; font-size: 0.85rem !important; margin-top: 5px !important; }
 
-    /* Box veliya pogama correct-ah irukka */
-    #contact {
+    /* Gap Killer & Typography Reduce */
+    .content-section { padding: 5px 4% 15px 4% !important; }
+    .sticky-header { margin-bottom: 10px !important; padding: 10px 0 5px 0 !important; }
+    .info-section { margin-bottom: 15px !important; padding: 5px 10px !important; }
+    .info-section h2 { margin-bottom: 8px !important; font-size: 1.25rem !important; }
+    .card { padding: 12px 15px !important; margin-bottom: 10px !important; }
+    .skill-category { margin-bottom: 10px !important; }
+    .card h3, .skill-category h3 { font-size: 1.05rem !important; }
+    p, li, .company, .date, .project-desc, .skill-category p { font-size: 0.85rem !important; line-height: 1.4 !important; }
+    .highlight { font-size: 0.9rem !important; }
+
+    /* Banner Fixes */
+    .full-width-banner, .full-width-banner.scrolled { padding: 8px 10px !important; }
+    #bannerText { white-space: nowrap !important; overflow: visible !important; font-size: clamp(9px, 2.5vw, 11px) !important; max-width: none !important; }
+    #topBanner:not(.scrolled) { justify-content: center !important; }
+    #topBanner:not(.scrolled) #bannerText { width: 100% !important; text-align: center !important; white-space: normal !important; font-size: 12.5px !important; }
+    #topBanner:not(.scrolled) .top-social-links { position: absolute !important; pointer-events: none !important; }
+    .top-social-links { gap: 5px !important; width: auto !important; }
+    .top-social-links .mini-btn { padding: 4px 6px !important; font-size: 9px !important; }
+    .social-btn { padding: 6px 10px !important; font-size: 0.75rem !important; gap: 4px !important; }
+
+    /* Email Modal Popup Fix */
+    #contact { width: 100% !important; box-sizing: border-box !important; padding: 20px 10px !important; overflow: visible !important; }
+    #contact p, #contact a, .email-text, #contact span, #contact strong, #contact b { font-size: clamp(9.5px, 2.8vw, 13px) !important; white-space: nowrap !important; line-height: 1.8 !important; }
+    #contact p { max-width: 100% !important; overflow: hidden !important; text-overflow: ellipsis !important; margin-bottom: 10px !important; }
+    .contact-line { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; align-items: baseline !important; gap: 5px !important; width: 100% !important; }
+    
+    .email-menu {
+        position: fixed !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important;
+        width: 85vw !important; max-width: 320px !important; background-color: #ffffff !important;
+        border-radius: 15px !important; padding: 15px !important; z-index: 9999999 !important;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.4), 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+        bottom: auto !important; margin: 0 !important;
+    }
+    .email-menu.show { display: flex !important; flex-direction: column !important; gap: 10px !important; animation: popInModal 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards !important; }
+    .email-menu a, .email-menu .copy-btn { background-color: #f0f6ff !important; color: var(--primary-blue) !important; text-align: center !important; border-radius: 10px !important; padding: 14px !important; font-weight: 600 !important; font-size: 1rem !important; margin: 0 !important; }
+    @keyframes popInModal { 0% { opacity: 0; transform: translate(-50%, -40%) scale(0.8); } 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+}
+
+/* ==========================================
+   9. 💥 ULTIMATE MOBILE PARALLAX, LAYOUT SWAP & GLOW EFFECT
+   ========================================== */
+@media (max-width: 768px) {
+    .main-container {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* --- 1. IMAGE TOP GAP & PLACEMENT --- */
+    .image-section img {
+        height: 100% !important;
+        width: auto !important; 
+        max-width: 50% !important; 
+        object-fit: contain !important;
+        object-position: top center !important; 
+        /* 💥 ITHU THAAN TRICK: Layout-ah disturb pannama image-ah mattum 15px mela thookurom */
+        transform: translateY(-15px) !important; 
+    }
+
+    .image-section img {
+        height: 100% !important;
         width: 100% !important;
-        box-sizing: border-box !important;
-        padding: 20px 10px !important;
-        overflow: hidden !important;
-    }
-
-    /* 💥 PUDHUSU: strong, b tags-aiyum target panrom (Email: font size fix panna) */
-    #contact p,
-    #contact a,
-    .email-text,
-    #contact span,
-    #contact strong,
-    #contact b {
-        /* Size-ah inum konjam chinna aakkurom (Orey line-la pathurathukku) */
-        font-size: clamp(9.5px, 2.8vw, 13px) !important;
-
-        /* 💥 MAGIC: Text eppovume madinjama orey straight line-la thaan nikkum */
-        white-space: nowrap !important;
-
-        line-height: 1.8 !important;
-    }
-
-    /* Paragraphs (Address, Phone, Email line) box-ah udakkama irukka */
-    #contact p {
-        max-width: 100% !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        /* Idham pathalana azhaga "..." nu varum */
-        margin-bottom: 10px !important;
-    }
-}
-
-/* ==========================================
-   TOP BANNER & MINI BUTTONS (FINAL FIX)
-   ========================================== */
-
-/* Banner Base */
-#topBanner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-}
-
-/* Hidden Buttons - Strict Straight Line */
-.top-social-links {
-    display: flex !important;
-    flex-direction: row !important; /* 💥 Ithu thaan straight line-la vekkum */
-    flex-wrap: nowrap !important;   /* 💥 Udanju keela vara vidathu */
-    align-items: center;
-    gap: 10px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-5px);
-    transition: all 0.3s ease;
-}
-
-/* ==========================================
-   ULTIMATE FIX FOR STRAIGHT LINE BUTTONS
-   ========================================== */
-
-/* 1. Scroll aagumbothu Banner format udaiyama irukka */
-.full-width-banner.scrolled {
-    justify-content: space-between !important; /* Text left-layum, buttons right-layum strict aaga nikkum */
-    padding: 10px 20px !important; 
-}
-
-/* 2. Container strict ah row-la thaan irukkanum */
-.top-social-links {
-    display: flex !important;
-    flex-direction: row !important; 
-    flex-wrap: nowrap !important; 
-    align-items: center !important;
-    gap: 10px !important;
-    width: auto !important; /* Box surungama irukka */
-    
-    /* Animations */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-5px);
-    transition: all 0.3s ease;
-}
-
-/* Scroll Pannumbothu theriyum */
-#topBanner.scrolled .top-social-links {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* 3. Buttons kandipa orey line-la thaan nikkanum (No stacking) */
-.top-social-links .mini-btn {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    width: max-content !important; /* Text evlo peruso avlo thaan width edukkum */
-    flex: 0 0 auto !important; /* Button size-ah browser kurakka koodathu */
-    padding: 4px 10px !important; 
-    font-size: 11px !important;
-    white-space: nowrap !important;
-    margin: 0 !important;
-}
-
-/* ==========================================
-   MOBILE VIEW FIX
-   ========================================== */
-@media (max-width: 768px) {
-    .full-width-banner.scrolled {
-        padding: 8px 10px !important;
+        object-fit: contain !important;
+        object-position: top !important; /* Image-ah mela antha gap kitta anchor pandrom */
+        transform: none !important;
     }
     
-    #bannerText {
-        white-space: nowrap !important; /* Kandipa orey line-la thaan irukkanum */
-        overflow: visible !important; /* Text hide aaga koodathu */
-        font-size: clamp(9px, 2.5vw, 11px) !important; /* Screen size-ku yetha maari font auto-va adjust aagum */
-        max-width: none !important; /* Text-ku limit illama full-a theriya */
-    }
-    
-    /* Extra space kedaikka banner padding-ah innum konjam kurakkalam */
-    .full-width-banner, 
-    .full-width-banner.scrolled {
-        padding: 8px 5px !important; 
-    }
-}
-
-    .top-social-links {
-        gap: 5px !important;
+    /* --- 2. LIGHT CARD OVERLAP --- */
+    .profile-card { 
+        margin-top: -10px !important; /* Image bottom-la 'light-ah' 10px mattum ulla pogum */
+        padding: 20px 15px !important;
+        border-radius: 20px !important;
+        width: 100% !important;
+        box-shadow: 0 -4px 15px rgba(0,0,0,0.05), 0 4px 15px rgba(0,0,0,0.05) !important;
+        position: relative !important;
+        z-index: 10 !important; /* Card mela theriya z-index 10 */
+        animation: welcomeGlow 2s ease-in-out 3; /* Same animation for card */
+        transition: all 1.0s ease; /* Glow smoothly fade-out aaga */
     }
 
-    .top-social-links .mini-btn {
-        padding: 4px 6px !important;
-        font-size: 9px !important; 
-    }
-
-
-/* Banner Alignment */
-#topBanner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    transition: all 0.3s ease; /* Smooth banner transition */
-}
-
-/* Initially Hide the Top Social Links */
-.top-social-links {
-    display: flex;
-    gap: 10px;
-    opacity: 0; /* Transparent ah irukum */
-    visibility: hidden; /* Click aagathu */
-    transform: translateY(-5px); /* Light ah mela irunthu keela vara maari effect */
-    transition: all 0.3s ease;
-}
-
-/* Scroll Pannumbothu (Name change aagum pothu) buttons theriya varum */
-#topBanner.scrolled .top-social-links {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* Mini Buttons Style - Size Romba Chinnatha aaka */
-.mini-btn {
-    padding: 4px 10px !important; 
-    font-size: 11px !important;
-    white-space: nowrap;
-}
-
-/* Mobile View Adjustments */
-@media (max-width: 768px) {
-    #topBanner {
-        padding: 8px 10px;
-    }
-    
-    #bannerText {
-        font-size: 12px; 
-        white-space: normal; /* Text hide aagama next line-ku wrap aaga allow pannum */
-        line-height: 1.3; /* Line gap paaka neat ah irukka */
-        max-width: 65%; /* Buttons-ah idikkama irukka text-ku limit set panrom */
-    }
-
-    .top-social-links {
-        gap: 5px;
-        flex-shrink: 0; /* Text perusa aanaalum buttons-oda size kuraiyaama irukka */
-    }
-
-    /* Mobile la buttons innum chinna size aagum */
-    .mini-btn {
-        padding: 4px 6px !important;
-        font-size: 9px !important; 
-    }
-}
-
-/* ==========================================
-   ULTIMATE MOBILE COMPACT VIEW (Max-width: 768px)
-   Itha unga CSS file-oda last-la paste pannunga
-   ========================================== */
-@media (max-width: 768px) {
-    
-    /* 1. DRASTICALLY REDUCE BLANK SPACES (GAPS) */
     .content-section {
-        padding: 10px 4% 20px 4% !important; /* Side and bottom gaps-ah total ah kurakkuthu */
+        order: 1 !important;
+        padding-top: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* UPDATE: Profile Card positioning to override image */
+    .hero-text {
+        order: 1 !important; 
+        padding-top: 0 !important;
+        margin-bottom: 10px !important;
+        z-index: 10 !important; /* Card image paina undela chustundi */
+        position: relative !important; /* Needed for z-index */
+    }
+    
+    .main-name { font-size: 1.5rem !important; }
+
+    /* Buttons Straight Line Mobile Fix */
+    .social-links-hero {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
+    }
+
+    /* --- MENU STICKY FIX --- */
+    .sticky-header {
+        position: sticky !important;
+        top: 50px !important; /* Exact-ah Top banner keela ottikira maari */
+        z-index: 1000 !important;
+        background: var(--bg-light) !important;
+        padding: 10px 0 5px 0 !important;
+        margin-top: 10px !important;
+    }
+
+    /* --- CONTACT BOX & FONT SIZE REDUCTION --- */
+    .contact-box {
+        padding: 15px !important; /* Overall box size chinna aagirum */
+        margin-bottom: 15px !important;
+    }
+    
+    .input-group {
+        margin-bottom: 12px !important;
+    }
+    
+    .input-group label {
+        font-size: 0.85rem !important; /* Label font size reduction */
+        margin-bottom: 5px !important;
+    }
+    
+    .contact-box input, .contact-box textarea {
+        padding: 8px 10px !important; /* Input space reduction */
+        font-size: 0.85rem !important; /* Typing font size reduction */
+        border-radius: 5px !important;
+    }
+    
+    .submit-btn {
+        padding: 10px !important; /* Button size reduction */
+        font-size: 0.9rem !important; /* Button font size reduction */
+    }
+
+    /* Push rest of content below menu */
+    main > section {
+        order: 3 !important;
+    }
+    /* ==========================================
+       1. MENU BAR & STICKY FIX
+       ========================================== */
+    .content-section {
+        display: flex !important;
+        flex-direction: column !important; /* Flex use panni order maathrom */
     }
     
     .hero-text {
-        padding-top: 15px !important;
-        margin-bottom: 25px !important; /* Name-ku keela irukka periya space-ah kurakkuthu */
+        order: 1 !important; /* Name Card First varum */
+        margin-bottom: 15px !important;
+    }
+    
+    .sticky-header {
+        order: 2 !important; /* Menu Bar Second varum (Card-ku keela) */
+        position: sticky !important;
+        top: 50px !important; /* Top banner 50px height irukku, so ithu exact ah athuku keela sticky aagum */
+        z-index: 1000 !important;
+        margin-top: 0 !important;
+        padding: 5px 0 !important;
+    }
+    
+    main {
+        order: 3 !important; /* Matha sections ellam 3rd varum */
     }
 
-    .info-section {
-        margin-bottom: 20px !important; /* Rendu topics (e.g., Skills -> Project) naduvula irukka gap */
-        padding: 0px 5px !important;
+    /* ==========================================
+       2. CONTACT BOX SIZE & FONT REDUCTION
+       ========================================== */
+    .contact-box {
+        padding: 15px !important; /* Overall box size chinna aagirum */
+        margin-bottom: 15px !important;
+        border-radius: 8px !important;
+    }
+    
+    .input-group {
+        margin-bottom: 12px !important; /* Inputs-ku naduvula ulla gap reduction */
+    }
+    
+    .input-group label {
+        font-size: 0.85rem !important; /* Label font size reduction */
+        margin-bottom: 4px !important;
+    }
+    
+    .contact-box input, .contact-box textarea {
+        padding: 8px 10px !important; /* Input box-kulla irukara space reduction */
+        font-size: 0.85rem !important; /* Type panra font size reduction */
+        border-radius: 5px !important;
+    }
+    
+    .submit-btn {
+        padding: 10px !important; /* Button size reduction */
+        font-size: 0.9rem !important; /* Button font size reduction */
+        border-radius: 5px !important;
+    }
+}
+
+/* ==========================================
+   10. SCROLL GLOW EFFECTS (Card & Nav)
+   ========================================== */
+.top-nav.glow-green {
+    border-top: 2px solid var(--neon-green) !important;
+    box-shadow: 0 -6px 20px rgba(0, 255, 64, 0.45), 0 4px 15px rgba(26, 76, 204, 0.08) !important;
+}
+
+.top-nav.glow-red {
+    border-top: 2px solid var(--primary-red) !important;
+    box-shadow: 0 -6px 20px rgba(255, 0, 0, 0.45), 0 4px 15px rgba(26, 76, 204, 0.08) !important;
+}
+
+.profile-card.glow-up { 
+    border-color: var(--neon-green) !important; 
+    box-shadow: 0 0 25px rgba(0, 255, 64, 0.5) !important; 
+}
+
+.profile-card.glow-down { 
+    border-color: var(--primary-red) !important; 
+    box-shadow: 0 0 25px rgba(204, 0, 0, 0.5) !important; 
+}
+
+/* ==========================================
+   11. COMPACT CARD RESUME BUTTON (MOBILE ONLY)
+   ========================================== */
+.card-resume-btn {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .card-resume-btn {
+        display: inline-block !important; /* Button content-ku yetha size mattum edukkum */
+        width: auto !important; /* Full width-ah thooki compact aakirom */
+        margin-top: 15px !important;
+        background-color: var(--primary-blue) !important;
+        color: #ffffff !important;
+        padding: 6px 18px !important; /* Padding-ah koraichu size-ah reduce panniyachu */
+        border-radius: 30px !important;
+        font-size: 0.8rem !important; /* Font size-ah 0.95-la irunthu 0.8-ku koraichachu */
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        box-shadow: 0 4px 10px rgba(26, 76, 204, 0.15) !important;
+        transition: all 0.3s ease !important;
+        text-align: center !important;
     }
 
-    .card {
-        padding: 12px 15px !important; /* White box kulla irukka space */
-        margin-bottom: 12px !important; /* Rendu cards-ku naduvula irukka gap */
+    /* Card-kulla center-ah nikka hero-text-ku oru update */
+    .hero-text .profile-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Ellathaiyum card-kulla center pannum */
     }
 
-    .info-section h2 {
-        margin-bottom: 10px !important; /* Title-kum content-kum gap */
-        padding-bottom: 4px !important;
+    .card-resume-btn:hover {
+        background-color: var(--primary-red) !important;
+        transform: translateY(-2px);
     }
+}
 
-    .skill-category {
-        margin-bottom: 12px !important;
+/* Initial Blink Animation for Green Glow */
+@keyframes welcomeGlow {
+    0% { 
+        filter: drop-shadow(0 0 0 rgba(0, 255, 64, 0)); 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Normal state */
+        border-color: transparent;
     }
-
-    /* 2. REDUCE FONT SIZES FOR MOBILE */
-    .name-container {
-        font-size: clamp(14px, 5vw, 24px) !important; /* Name mobile-la correct aana chinna size-ku varum */
+    50% { 
+        filter: drop-shadow(0 0 25px rgba(0, 255, 64, 0.8)); 
+        box-shadow: 0 0 30px rgba(0, 255, 64, 0.6); /* Green Glow state */
+        border-color: var(--neon-green);
     }
-
-    .info-section h2 {
-        font-size: 1.25rem !important; /* Main headings (Skills, Project, etc.) */
-    }
-
-    .card h3, .skill-category h3 {
-        font-size: 1.05rem !important; /* Sub-headings (Python, HTML, etc.) */
-    }
-
-    p, li, .company, .date, .project-desc, .skill-category p {
-        font-size: 0.85rem !important; /* Normal text ellam chinna size aagidum */
-        line-height: 1.5 !important;
-    }
-
-    .highlight {
-        font-size: 0.9rem !important;
+    100% { 
+        filter: drop-shadow(0 0 0 rgba(0, 255, 64, 0)); 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Back to normal */
+        border-color: transparent;
     }
 }
