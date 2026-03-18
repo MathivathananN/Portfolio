@@ -1,222 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathivathanan N | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="Portfolio.css">
 </head>
+
 <body>
 
-<div class="full-width-banner" id="topBanner">
+    <div class="full-width-banner" id="topBanner">
         <span id="bannerText">Welcome to Mathivathanan's Portfolio</span>
+
+        <div class="top-social-links">
+            <a href="https://github.com/mathivathanann" target="_blank"
+                class="social-btn github-btn mini-btn">GitHub</a>
+            <a href="https://www.linkedin.com/in/mathivathanann" target="_blank"
+                class="social-btn linkedin-btn mini-btn">LinkedIn</a>
+            <a href="mailto:mathivathanan.n@hotmail.com" class="social-btn email-btn mini-btn"
+                onclick="copyEmailAndShowToast()">Get in Touch</a>
+        </div>
     </div>
 
     <div class="main-container">
-        
+
         <div class="content-section">
-            
+
             <header class="sticky-header">
-            <nav class="top-nav">
-                <div class="mobile-nav-header">
-                    <span id="currentSectionText">Portfolio</span>
-                    <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
-                </div>
-                
-                <ul id="navLinks">
-                    <li><a href="#courses" class="nav-item">Courses</a></li>
-                    <li><a href="#education" class="nav-item">Education</a></li>
-                    <li><a href="#internships" class="nav-item">Internships</a></li>
-                    <li><a href="#skills" class="nav-item">Skills</a></li>
-                    <li><a href="#project" class="nav-item">Project</a></li>
-                    <li><a href="#contact" class="nav-item">Contact</a></li>
-                    <li><a href="Mathivathanan_Resume.pdf" download class="nav-resume-link">Download Resume</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <main>
-            <main>
-            <div class="hero-text">
-                <div class="name-container">
-                    <span class="prefix">Mr. </span>
-                    <span class="main-name">Mathivathanan N</span>
-                    <span class="suffix">, DAE., B.E-EEE.</span>
-                </div>
-                
-                <div class="social-links-hero">
-                    <a href="https://github.com/mathivathanann" target="_blank" class="social-btn github-btn">
-                        GitHub
-                    </a>
-                    
-                    <a href="https://www.linkedin.com/in/mathivathanann" target="_blank" class="social-btn linkedin-btn">
-                        LinkedIn
-                    </a>
-                    
-                    <a href="mailto:mathivathanan.n@hotmail.com" class="social-btn email-btn" onclick="copyEmailAndShowToast()">
-                        Get in Touch
-                    </a>
-                </div>
-            </div>
-
-            <section id="courses" class="info-section">
-                <h2>Certifications & Courses</h2>
-                <div class="card">
-                    <h3>Junior Software Developer</h3>
-                    <p class="company">Currently undergoing (SSC/N0506) training under the DDU-GKY scheme by the Ministry of Rural Development, Government of India.</p>
-                    <p class="highlight">600 Hours | On-Site</p>
-                    <p class="date">3rd March 2026 To Present</p>
-                </div>
-                <div class="card">
-                    <h3>Python Programming</h3>
-                    <p class="company">Microsoft through Skill India Digital hub.</p>
-                    <p class="highlight">40 Hours | Remote</p>
-                    <p class="date">8th February 2026</p>
-                </div>
-                <div class="card">
-                    <h3>Python Programming</h3>
-                    <p class="company">Reliance Foundation Skilling Academy through Skill India Digital hub.</p>
-                    <p class="highlight">90 Hours | Remote</p>
-                    <p class="date">31st January 2026</p>
-                </div>
-            </section>
-
-            <section id="education" class="info-section">
-                <h2>Education</h2>
-                <div class="card">
-                    <h3>Bachelor’s Degree | Electrical and Electronics Engineering</h3>
-                    <p class="company">K.S.R. College of Engineering - Tiruchengode</p>
-                    <p class="date">August 2022 - May 2025 (Lateral | Full Time Course)</p>
-                    <p class="highlight">CGPA: 7.18</p>
-                </div>
-                <div class="card">
-                    <h3>Diploma | Automobile Engineering</h3>
-                    <p class="company">Nandha Polytechnic College - Erode</p>
-                    <p class="date">July 2017 - April 2020 (Regular | Full Time Course)</p>
-                    <p class="highlight">Percentage: 80%</p>
-                </div>
-                <div class="card">
-                    <h3>SSLC (10th Standard)</h3>
-                    <p class="company">Chinnasamy Ammal Municipal Boys Higher Secondary School - Tiruppur</p>
-                    <p class="date">Jun 2016 - March 2017</p>
-                    <p class="highlight">Percentage: 72.2%</p>
-                </div>
-            </section>
-
-            <section id="internships" class="info-section">
-                <h2>Internships</h2>
-                <div class="card">
-                    <h3>Salesforce Developer</h3>
-                    <p class="company">SmartInternz | Virtual Internship | Remote</p>
-                    <p class="date">November 2023 – January 2024</p>
-                    <ul>
-                        <li>Salesforce Fundamentals, Organizational Setup, Relationship & Process Automation</li>
-                        <li>Types of Flows & Security</li>
-                        <li>Apex, Testing and Debugging, VS Code setup & CLI Setup</li>
-                        <li>Lightning Web Components (LWC) & API</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Full Stack Development</h3>
-                    <p class="company">Elewayte | Virtual Internship | Remote</p>
-                    <p class="date">Jun 2023 – July 2023</p>
-                    <ul>
-                        <li>HTML Structure, CSS Styling & JavaScript</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="skills" class="info-section">
-                <h2>Skills</h2>
-                <div class="skill-category">
-                    <h3>Technical Skills</h3>
-                    <p>Python Programming, php, Data Handling (MS Excel), Object Oriented Programming (OOP), Data Structure, Linux</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <p>Adoptability, Leadership, Multitasking, Document Reporting, Time Management, Analytical Thinking, Creativity</p>
-                </div>
-            </section>
-
-            <section id="project" class="info-section">
-                <h2>Project</h2>
-                <div class="card">
-                    <h3>Design and Development of Efficient Task Scheduling Algorithm using FreeRTOS for Autonomous Vehicle</h3>
-                    <p class="project-desc">
-                        Completed a main project with a duration of six months on “Design and Development of Efficient Task Scheduling Algorithm using FreeRTOS for Autonomous Vehicle” to optimize the real-time task scheduling of autonomous vehicles. The project improves the efficiency of the system, reduces the response time, and increases the reliability and safety of the intelligent vehicle system. 
-                        <br><br>
-                        <strong>Publication:</strong> Published in the International Conference on Research and Development in Information, Communication and Computing Technologies (ICRDICCT 2025), ISBN: 978-989-758-777-1, SCOPUS Indexed.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Interactive Developer Web Portfolio</h3>
-                    <p class="project-desc">
-                        A custom-built, fully responsive web application featuring optimized UI elements and seamless cross-device navigation. Designed to dynamically showcase my programming expertise, hands-on projects, and Python certifications. 
-                    </p>
-                </div>
-            </section>
-            
-            <section id="contact" class="info-section">
-                <h2>Contact Me</h2>
-                <div class="contact-box">
-                    <form action="https://formspree.io/f/xykndngv" method="POST">
-                        <div class="input-group">
-                            <label>Your Name</label>
-                            <input type="text" name="name" placeholder="Enter your name" required>
-                        </div>
-                        <div class="input-group">
-                            <label>Your Email</label>
-                            <input type="email" name="email" placeholder="example@mail.com" required>
-                        </div>
-                        <div class="input-group">
-                            <label>Your Message</label>
-                            <textarea name="message" rows="5" placeholder="Type your message here..." required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-
-                <div class="contact-details">
-                    <p><strong>Address:</strong><br> 5/243 Thangam Complex, Pettikadai Bus Stop,<br> Uthukkuli Main Road, Uthukkuli (TK),<br> Tiruppur (DT) – 638 752.</p>
-                    <p><strong>Contact:</strong> <a href="tel:+916382068379">+91 63820 68379</a></p>
-                    
-                    <div class="contact-line">
-                        <strong>Email:</strong> 
-                        <div class="email-dropdown">
-                            <span class="email-text" onclick="toggleEmailMenu()">mathivathanan.n@hotmail.com</span>
-                            <div class="email-menu" id="emailMenu">
-                                <span class="copy-btn" onclick="openMailApp()">📧 Open Mail App</span>
-                                
-                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mathivathanan.n@hotmail.com" target="_blank">🌐 Open in Gmail</a>
-                                
-                                <span class="copy-btn" onclick="copyEmailAndShowToast()">📋 Copy Email ID</span>
-                            </div>
-                        </div>
+                <nav class="top-nav">
+                    <div class="mobile-nav-header">
+                        <span id="currentSectionText">Portfolio</span>
+                        <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
                     </div>
 
-                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mathivathanann" target="_blank">linkedin.com/in/mathivathanann</a></p>
-                    <p><strong>GitHub:</strong> <a href="https://github.com/mathivathanann" target="_blank">github.com/mathivathanann</a></p>
+                    <ul id="navLinks">
+                        <li><a href="#courses" class="nav-item">Courses</a></li>
+                        <li><a href="#education" class="nav-item">Education</a></li>
+                        <li><a href="#internships" class="nav-item">Internships</a></li>
+                        <li><a href="#skills" class="nav-item">Skills</a></li>
+                        <li><a href="#project" class="nav-item">Project</a></li>
+                        <li><a href="#contact" class="nav-item">Contact</a></li>
+                        <li><a href="Mathivathanan_Resume.pdf" download class="nav-resume-link">Download Resume</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="hero-text">
+                    <div class="name-container">
+                        <span class="prefix">Mr. </span>
+                        <span class="main-name">Mathivathanan N</span>
+                        <span class="suffix">, DAE., B.E-EEE.</span>
+                    </div>
+
+                    <div class="social-links-hero">
+                        <a href="https://github.com/mathivathanann" target="_blank" class="social-btn github-btn">
+                            GitHub
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/mathivathanann" target="_blank"
+                            class="social-btn linkedin-btn">
+                            LinkedIn
+                        </a>
+
+                        <a href="mailto:mathivathanan.n@hotmail.com" class="social-btn email-btn"
+                            onclick="copyEmailAndShowToast()">
+                            Get in Touch
+                        </a>
+                    </div>
                 </div>
-            </section>
 
-        </main>
+                <section id="courses" class="info-section">
+                    <h2>Certifications & Courses</h2>
+                    <div class="card">
+                        <h3>Junior Software Developer</h3>
+                        <p class="company">Currently undergoing (SSC/N0506) training under the DDU-GKY scheme by the
+                            Ministry of Rural Development, Government of India.</p>
+                        <p class="highlight">600 Hours | On-Site</p>
+                        <p class="date">3rd March 2026 To Present</p>
+                    </div>
+                    <div class="card">
+                        <h3>Python Programming</h3>
+                        <p class="company">Microsoft through Skill India Digital hub.</p>
+                        <p class="highlight">40 Hours | Remote</p>
+                        <p class="date">8th February 2026</p>
+                    </div>
+                    <div class="card">
+                        <h3>Python Programming</h3>
+                        <p class="company">Reliance Foundation Skilling Academy through Skill India Digital hub.</p>
+                        <p class="highlight">90 Hours | Remote</p>
+                        <p class="date">31st January 2026</p>
+                    </div>
+                </section>
+
+                <section id="education" class="info-section">
+                    <h2>Education</h2>
+                    <div class="card">
+                        <h3>Bachelor’s Degree | Electrical and Electronics Engineering</h3>
+                        <p class="company">K.S.R. College of Engineering - Tiruchengode</p>
+                        <p class="date">August 2022 - May 2025 (Lateral | Full Time Course)</p>
+                        <p class="highlight">CGPA: 7.18</p>
+                    </div>
+                    <div class="card">
+                        <h3>Diploma | Automobile Engineering</h3>
+                        <p class="company">Nandha Polytechnic College - Erode</p>
+                        <p class="date">July 2017 - April 2020 (Regular | Full Time Course)</p>
+                        <p class="highlight">Percentage: 80%</p>
+                    </div>
+                    <div class="card">
+                        <h3>SSLC (10th Standard)</h3>
+                        <p class="company">Chinnasamy Ammal Municipal Boys Higher Secondary School - Tiruppur</p>
+                        <p class="date">Jun 2016 - March 2017</p>
+                        <p class="highlight">Percentage: 72.2%</p>
+                    </div>
+                </section>
+
+                <section id="internships" class="info-section">
+                    <h2>Internships</h2>
+                    <div class="card">
+                        <h3>Salesforce Developer</h3>
+                        <p class="company">SmartInternz | Virtual Internship | Remote</p>
+                        <p class="date">November 2023 – January 2024</p>
+                        <ul>
+                            <li>Salesforce Fundamentals, Organizational Setup, Relationship & Process Automation</li>
+                            <li>Types of Flows & Security</li>
+                            <li>Apex, Testing and Debugging, VS Code setup & CLI Setup</li>
+                            <li>Lightning Web Components (LWC) & API</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Full Stack Development</h3>
+                        <p class="company">Elewayte | Virtual Internship | Remote</p>
+                        <p class="date">Jun 2023 – July 2023</p>
+                        <ul>
+                            <li>HTML Structure, CSS Styling & JavaScript</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="skills" class="info-section">
+                    <h2>Skills</h2>
+                    <div class="skill-category">
+                        <h3>Technical Skills</h3>
+                        <p>Python Programming, php, Data Handling (MS Excel), Object Oriented Programming (OOP), Data
+                            Structure, Linux</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <p>Adoptability, Leadership, Multitasking, Document Reporting, Time Management, Analytical
+                            Thinking, Creativity</p>
+                    </div>
+                </section>
+
+                <section id="project" class="info-section">
+                    <h2>Project</h2>
+                    <div class="card">
+                        <h3>Design and Development of Efficient Task Scheduling Algorithm using FreeRTOS for Autonomous
+                            Vehicle</h3>
+                        <p class="project-desc">
+                            Completed a main project with a duration of six months on “Design and Development of
+                            Efficient Task Scheduling Algorithm using FreeRTOS for Autonomous Vehicle” to optimize the
+                            real-time task scheduling of autonomous vehicles. The project improves the efficiency of the
+                            system, reduces the response time, and increases the reliability and safety of the
+                            intelligent vehicle system.
+                            <br><br>
+                            <strong>Publication:</strong> Published in the International Conference on Research and
+                            Development in Information, Communication and Computing Technologies (ICRDICCT 2025), ISBN:
+                            978-989-758-777-1, SCOPUS Indexed.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Interactive Developer Web Portfolio</h3>
+                        <p class="project-desc">
+                            A custom-built, fully responsive web application featuring optimized UI elements and
+                            seamless cross-device navigation. Designed to dynamically showcase my programming expertise,
+                            hands-on projects, and Python certifications.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="contact" class="info-section">
+                    <h2>Contact Me</h2>
+                    <div class="contact-box">
+                        <form action="https://formspree.io/f/xykndngv" method="POST">
+                            <div class="input-group">
+                                <label>Your Name</label>
+                                <input type="text" name="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Your Email</label>
+                                <input type="email" name="email" placeholder="example@mail.com" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Your Message</label>
+                                <textarea name="message" rows="5" placeholder="Type your message here..."
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-details">
+                        <p><strong>Address:</strong><br> 5/243 Thangam Complex, Pettikadai Bus Stop,<br> Uthukkuli Main
+                            Road, Uthukkuli (TK),<br> Tiruppur (DT) – 638 752.</p>
+                        <p><strong>Contact:</strong> <a href="tel:+916382068379">+91 63820 68379</a></p>
+
+                        <div class="contact-line">
+                            <strong>Email:</strong>
+                            <div class="email-dropdown">
+                                <span class="email-text" onclick="toggleEmailMenu()">mathivathanan.n@hotmail.com</span>
+                                <div class="email-menu" id="emailMenu">
+                                    <span class="copy-btn" onclick="openMailApp()">📧 Open Mail App</span>
+
+                                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mathivathanan.n@hotmail.com"
+                                        target="_blank">🌐 Open in Gmail</a>
+
+                                    <span class="copy-btn" onclick="copyEmailAndShowToast()">📋 Copy Email ID</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mathivathanann"
+                                target="_blank">linkedin.com/in/mathivathanann</a></p>
+                        <p><strong>GitHub:</strong> <a href="https://github.com/mathivathanann"
+                                target="_blank">github.com/mathivathanann</a></p>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+        <div class="image-section">
+            <img src="Profile.png" alt="Mathivathanan N Photo">
+        </div>
+
     </div>
 
-    <div class="image-section">
-        <img src="Profile.png" alt="Mathivathanan N Photo">
-    </div>
-
-</div>
-
-<div id="toastPopup">✅ Email ID copied to clipboard!</div>
+    <div id="toastPopup">✅ Email ID copied to clipboard!</div>
 
     <script>
         // ==========================================
         // Global Lock Variable for Green Shadow
         // ==========================================
-        let isSuccessGlowActive = false; 
+        let isSuccessGlowActive = false;
 
         // Options menu-va open/close panna
         function toggleEmailMenu() {
@@ -224,7 +254,7 @@
         }
 
         // Veliya click panna menu close aagida
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (!event.target.matches('.email-text')) {
                 var dropdowns = document.getElementsByClassName("email-menu");
                 for (var i = 0; i < dropdowns.length; i++) {
@@ -239,16 +269,16 @@
         // ==========================================
         // Banner Text Change on Scroll Function
         // ==========================================
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             var banner = document.getElementById('topBanner');
             var bannerText = document.getElementById('bannerText');
-            
-            if (window.scrollY > 100) { 
+
+            if (window.scrollY > 100) {
                 banner.classList.add('scrolled');
-                bannerText.textContent = "Mathivathanan N, DAE., B.E-EEE."; 
+                bannerText.textContent = "Mathivathanan N";
             } else {
                 banner.classList.remove('scrolled');
-                bannerText.textContent = "Welcome to Mathivathanan's Portfolio"; 
+                bannerText.textContent = "Welcome to Mathivathanan's Portfolio";
             }
         });
 
@@ -257,10 +287,10 @@
         // ==========================================
         function showToastMessage(message) {
             var toast = document.getElementById("toastPopup");
-            if(toast) {
+            if (toast) {
                 toast.innerHTML = message;
                 toast.classList.add("show");
-                setTimeout(function() {
+                setTimeout(function () {
                     toast.classList.remove("show");
                 }, 3500);
             }
@@ -271,7 +301,7 @@
         // ==========================================
         function copyEmailAndShowToast() {
             var emailID = "mathivathanan.n@hotmail.com";
-            
+
             try {
                 navigator.clipboard.writeText(emailID);
             } catch (err) {
@@ -282,7 +312,7 @@
                 document.execCommand("copy");
                 document.body.removeChild(tempInput);
             }
-            
+
             showToastMessage("✅ Email ID copied to clipboard!");
 
             var emailMenu = document.getElementById("emailMenu");
@@ -293,14 +323,14 @@
             if (profileImg) {
                 isSuccessGlowActive = true; // Hover colors-ah lock pandrom
                 profileImg.style.filter = "drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px rgba(40, 167, 69, 0.7))";
-                
-                setTimeout(function() {
+
+                setTimeout(function () {
                     isSuccessGlowActive = false; // 2 seconds kalichu unlock pandrom
                     // Unlock aana aprom mouse vera button mela illana mattum shadow-ah remove pannu
                     if (!document.querySelector('.social-btn:hover') && !document.querySelector('.nav-resume-link:hover')) {
-                        profileImg.style.filter = ""; 
+                        profileImg.style.filter = "";
                     }
-                }, 2000); 
+                }, 2000);
             }
         }
 
@@ -318,41 +348,41 @@
         // ==========================================
         // MAGIC SHADOW EFFECT (Color Change Only)
         // ==========================================
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var profileImg = document.querySelector('.image-section img');
-            
+
             function applyColorShadow(color) {
                 // Green lock active-ah iruntha entha color-um maara koodathu!
-                if (isSuccessGlowActive) return; 
+                if (isSuccessGlowActive) return;
                 profileImg.style.filter = `drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.2)) drop-shadow(-25px 25px 45px ${color})`;
             }
-            
+
             function removeColorShadow() {
                 // Green lock active-ah iruntha shadow remove aaga koodathu!
-                if (isSuccessGlowActive) return; 
-                profileImg.style.filter = ""; 
+                if (isSuccessGlowActive) return;
+                profileImg.style.filter = "";
             }
 
             var githubBtn = document.querySelector('.github-btn');
-            if(githubBtn) {
+            if (githubBtn) {
                 githubBtn.addEventListener('mouseenter', () => applyColorShadow('rgba(36, 41, 46, 0.5)'));
                 githubBtn.addEventListener('mouseleave', removeColorShadow);
             }
 
             var linkedinBtn = document.querySelector('.linkedin-btn');
-            if(linkedinBtn) {
+            if (linkedinBtn) {
                 linkedinBtn.addEventListener('mouseenter', () => applyColorShadow('rgba(0, 119, 181, 0.5)'));
                 linkedinBtn.addEventListener('mouseleave', removeColorShadow);
             }
 
             var emailBtn = document.querySelector('.email-btn');
-            if(emailBtn) {
+            if (emailBtn) {
                 emailBtn.addEventListener('mouseenter', () => applyColorShadow('rgba(204, 0, 0, 0.5)'));
                 emailBtn.addEventListener('mouseleave', removeColorShadow);
             }
 
             var resumeBtn = document.querySelector('.nav-resume-link');
-            if(resumeBtn) {
+            if (resumeBtn) {
                 resumeBtn.addEventListener('mouseenter', () => applyColorShadow('rgba(26, 76, 204, 0.5)'));
                 resumeBtn.addEventListener('mouseleave', removeColorShadow);
             }
@@ -361,19 +391,19 @@
         // ==========================================
         // MOBILE NAVBAR & SCROLL TRACKER
         // ==========================================
-        document.addEventListener("DOMContentLoaded", function() {
-            
+        document.addEventListener("DOMContentLoaded", function () {
+
             // 1. Menu Toggle Function
-            window.toggleMobileMenu = function() {
+            window.toggleMobileMenu = function () {
                 var navLinks = document.getElementById("navLinks");
                 navLinks.classList.toggle("active");
             }
 
             // 2. Link click panna udane menu close aagida
             var navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(function(item) {
-                item.addEventListener('click', function() {
-                    if(window.innerWidth <= 768) {
+            navItems.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
                         document.getElementById("navLinks").classList.remove("active");
                     }
                 });
@@ -390,12 +420,12 @@
                 threshold: 0
             };
 
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         // Section-oda ID (e.g., 'courses', 'skills') eduthu text-ah maathrom
                         var currentId = entry.target.getAttribute("id");
-                        if(currentId && currentSectionText) {
+                        if (currentId && currentSectionText) {
                             var sectionName = currentId.charAt(0).toUpperCase() + currentId.slice(1);
                             currentSectionText.textContent = sectionName;
                         }
@@ -404,10 +434,11 @@
             }, observerOptions);
 
             // Ellaa section-um observe panrom
-            sections.forEach(function(section) {
+            sections.forEach(function (section) {
                 observer.observe(section);
             });
         });
     </script>
 </body>
+
 </html>
